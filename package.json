@@ -1,0 +1,44 @@
+{
+  "name": "gatsby-start-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sealworks/gatsby-start-template",
+  "author": "Pedro Moreno <nennogabriel@gmail.com>",
+  "license": "0BSD",
+  "scripts": {
+    "proxy:cms": "npx netlify-cms-proxy-server",
+    "develop": "gatsby develop",
+    "develop:host": "gatsby develop -H 0.0.0.0",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "serve": "gatsby clean && gatsby build && gatsby serve -H 0.0.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "prettier": "^2.2.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@chakra-ui/gatsby-plugin": "^1.0.0",
+    "@chakra-ui/react": "^1.0.1",
+    "@emotion/react": "^11.1.1",
+    "@emotion/styled": "^11.0.0",
+    "@mdx-js/mdx": "^1.6.21",
+    "@mdx-js/react": "^1.6.21",
+    "framer-motion": "^2.9.4",
+    "gatsby": "^2.27.0",
+    "gatsby-plugin-mdx": "^1.5.0",
+    "gatsby-plugin-netlify": "^2.6.0",
+    "gatsby-plugin-netlify-cms": "^4.5.0",
+    "gatsby-plugin-typescript": "^2.7.0",
+    "netlify-cms-app": "^2.13.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}

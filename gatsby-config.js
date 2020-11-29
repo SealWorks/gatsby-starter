@@ -9,12 +9,13 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-plugin-typescript`,
     `@chakra-ui/gatsby-plugin`,
-    `gatsby-plugin-mdx`,
+    // `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
         manualInit: true,
         modulePath: path.join(__dirname, `src`, `cms`, `index.ts`),
+        // stylesPath: path.join(__dirname, `src`, `cms`, `admin.css`),
         // enableIdentityWidget: true, // Netlify identity
         publicPath: `_admin`,
         htmlTitle: `${siteMetadata.title} CMS Panel`,

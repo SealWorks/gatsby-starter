@@ -1,17 +1,45 @@
 import { CmsCollectionFile } from "netlify-cms-core"
 
-const homePage: CmsCollectionFile = {
+const collectionFile: CmsCollectionFile = {
   file: "content/settings/siteMetadata.json",
-  label: "Button",
-  name: "Button",
+  label: "Site Metadata",
+  name: "siteMetadata",
   fields: [
+    { label: "Title", name: "title", widget: "string" },
+    { label: "Canonical Url", name: "siteUrl", widget: "string" },
+    { label: "Short Slogan", name: "slogan", widget: "string" },
     {
-      label: "Title",
-      name: "title",
+      label: "Default Description",
+      name: "description",
+      widget: "string",
+      pattern: [
+        ".{80,155}",
+        "Must have at least 80 characters and not more than 155",
+      ],
+    },
+    { label: "Main Language", name: "lang", widget: "string" },
+    { label: "Logo", name: "logo", widget: "image" },
+    {
+      label: "Logo Alternative",
+      name: "logoAlt",
+      widget: "image",
+    },
+    {
+      label: "Default Image on Share",
+      name: "thumbnail",
+      widget: "image",
+    },
+    {
+      label: "Default Publisher",
+      name: "publisher",
       widget: "string",
     },
-    { label: "body", name: "body", widget: "markdown" },
+    {
+      label: "Default Author",
+      name: "author",
+      widget: "string",
+    },
   ],
 }
 
-export default homePage
+export default collectionFile

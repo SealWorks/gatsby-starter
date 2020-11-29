@@ -1,10 +1,11 @@
 import React from "react"
-import { Box, Heading } from "@chakra-ui/react"
+import { Heading } from "@chakra-ui/react"
+import Layout from "../layouts/default"
 
 const IndexPage = (): JSX.Element => (
-  <Box>
+  <Layout>
     <Heading>Hello World</Heading>
-  </Box>
+  </Layout>
 )
 
 export default IndexPage

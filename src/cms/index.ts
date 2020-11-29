@@ -1,8 +1,7 @@
 import CMS from "netlify-cms-app"
 import { CmsConfig } from "netlify-cms-core"
-import { collections } from "./collections"
+import { collections, registerPreviews } from "./collections"
 import { repository } from "../../package.json"
-
 interface LocalCmsConfig extends CmsConfig {
   local_backend?: boolean | { url: string; allowed_hosts: string[] }
 }
@@ -30,3 +29,5 @@ if (process.env.NODE_ENV === "development") {
 }
 
 CMS.init({ config })
+
+registerPreviews()

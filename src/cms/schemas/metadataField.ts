@@ -1,9 +1,10 @@
 import { CmsField } from "netlify-cms-core"
 
 const metadataField: CmsField = {
-  label: "SEO",
-  name: "seo",
+  label: "Metadata",
+  name: "metadata",
   widget: "object",
+  collapsed: true,
   fields: [
     { name: "templateKey", widget: "hidden", default: "home" },
     {

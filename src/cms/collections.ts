@@ -1,9 +1,38 @@
-import pages from "./collections/pages"
-import blogPosts from "./collections/blogPosts"
-import blogCategories from "./collections/blogCategories"
-import ui from "./collections/ui"
-import settings from "./collections/settings"
+import CMS from "netlify-cms-app"
 
-export const collections = [pages, blogPosts, blogCategories, ui, settings]
+import { pagesCollection, pagesTemplate } from "./collections/pages"
+import { blogPostsCollection, blogPostsTemplate } from "./collections/blogPosts"
+import {
+  blogCategoriesCollection,
+  blogCategoriesTemplate,
+} from "./collections/blogCategories"
+import { uiCollection } from "./collections/ui"
+import {
+  settingsCollection,
+  settingsPreviewTemplate,
+} from "./collections/settings"
+import { authorsCollection } from "./collections/authors"
+import withChakra from "./withChakra"
+// import withEmotion from "./withEmotion"
 
-export function registerPreviews() {}
+export const collections = [
+  pagesCollection,
+  blogPostsCollection,
+  blogCategoriesCollection,
+  authorsCollection,
+  uiCollection,
+  settingsCollection,
+]
+
+export function registerPreviews() {
+  CMS.registerPreviewTemplate(pagesCollection.name, withChakra(pagesTemplate))
+  CMS.registerPreviewTemplate(blogPostsCollection.name, blogPostsTemplate)
+  CMS.registerPreviewTemplate(
+    blogCategoriesCollection.name,
+    blogCategoriesTemplate
+  )
+  CMS.registerPreviewTemplate(
+    "manifest",
+    withChakra(settingsPreviewTemplate.manifest)
+  )
+}

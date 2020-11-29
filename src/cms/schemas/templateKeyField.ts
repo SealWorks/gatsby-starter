@@ -4,7 +4,7 @@ const templateKeyField: CmsField = {
   label: "Template",
   name: "templateKey",
   widget: "select",
-  options: [{ label: "Default Template", value: "default" }],
+  options: [{ label: "Default", value: "default" }],
   default: ["default"],
 }
 

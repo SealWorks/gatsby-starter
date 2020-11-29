@@ -5,7 +5,7 @@ const slugField: CmsField = {
   name: "slug",
   widget: "string",
   pattern: [
-    "^/[a-z0-9]+(?:-[a-z0-9]+)*$",
+    "^(/[a-z0-9]*)(?:-[a-z0-9]+)*$",
     "A slug can have no spaces or special characters",
   ],
   hint:

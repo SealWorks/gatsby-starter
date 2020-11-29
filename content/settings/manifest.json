@@ -1,0 +1,10 @@
+{
+  "icon": "/img/logo.svg",
+  "name": "Teste",
+  "short_name": "teste",
+  "start_url": "/",
+  "background_color": "#adadad",
+  "theme_color": "#717171",
+  "orientation": "portrait",
+  "display": "standalone"
+}

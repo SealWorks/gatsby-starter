@@ -3,7 +3,7 @@ import { CmsCollectionFile } from "netlify-cms-core"
 const homePage: CmsCollectionFile = {
   file: "content/ui/button.mdx",
   label: "Button",
-  name: "Button",
+  name: "button",
   fields: [
     {
       label: "Title",

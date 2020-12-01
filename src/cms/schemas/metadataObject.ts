@@ -1,6 +1,7 @@
 import { CmsField } from "netlify-cms-core"
+import descriptionField from "./descriptionField"
 
-const metadataField: CmsField = {
+const metadataObject: CmsField = {
   label: "Metadata",
   name: "metadata",
   widget: "object",
@@ -14,16 +15,7 @@ const metadataField: CmsField = {
       hint: "to long titles will be truncate at search engines",
       required: false,
     },
-    {
-      label: "Description",
-      name: "description",
-      widget: "string",
-      pattern: [
-        ".{10,255}",
-        "Must have at least 10 characters and what exceeds 155 will be hidden (max 255)",
-      ],
-      required: false,
-    },
+    descriptionField,
     {
       label: "Image",
       name: "image",
@@ -43,4 +35,4 @@ const metadataField: CmsField = {
   ],
 }
 
-export default metadataField
+export default metadataObject

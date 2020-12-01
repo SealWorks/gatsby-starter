@@ -1,11 +1,11 @@
 import React from "react"
 import { Heading } from "@chakra-ui/react"
-import Layout from "../layouts/default"
+import DefaultLayout from "../components/layouts/DefaultLayout"
 
 const IndexPage = (): JSX.Element => (
-  <Layout>
+  <DefaultLayout>
     <Heading>Hello World</Heading>
-  </Layout>
+  </DefaultLayout>
 )
 
 export default IndexPage

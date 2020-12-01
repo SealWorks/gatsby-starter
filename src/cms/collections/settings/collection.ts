@@ -4,6 +4,8 @@ import publicKeysCollectionFile from "./files/publicKeys"
 import siteMetadataCollectionFile from "./files/siteMetadata"
 import socialCollectionFile from "./files/social"
 import infoCollectionFile from "./files/info"
+import googleFontsCollectionFile from "./files/googleFonts"
+import colorsCollectionFile from "./files/colors"
 
 const collection: CmsCollection = {
   label: "Settings (!)",
@@ -11,13 +13,15 @@ const collection: CmsCollection = {
   extension: "json",
   format: "json",
   media_folder: "../../static/img",
-  public_folder: "/img",
+  public_folder: "../../static/img",
   files: [
     socialCollectionFile,
-    publicKeysCollectionFile,
     infoCollectionFile,
-    manifestCollectionFile,
+    colorsCollectionFile,
+    googleFontsCollectionFile,
+    publicKeysCollectionFile,
     siteMetadataCollectionFile,
+    manifestCollectionFile,
   ],
 }
 

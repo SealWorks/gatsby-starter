@@ -1,4 +1,7 @@
 import { CmsCollectionFile } from "netlify-cms-core"
+import descriptionField from "../../../schemas/descriptionField"
+import metadataField from "../../../schemas/metadataObject"
+import urlField from "../../../schemas/urlField"
 
 const collectionFile: CmsCollectionFile = {
   file: "content/settings/siteMetadata.json",
@@ -6,15 +9,13 @@ const collectionFile: CmsCollectionFile = {
   name: "siteMetadata",
   fields: [
     { label: "Title", name: "title", widget: "string" },
-    { label: "Canonical Url", name: "siteUrl", widget: "string" },
-    { label: "Short Slogan", name: "slogan", widget: "string" },
+    { ...urlField, label: "Canonical Url", name: "siteUrl" },
     {
+      ...descriptionField,
       label: "Default Description",
-      name: "description",
-      widget: "string",
       pattern: [
-        ".{80,155}",
-        "Must have at least 80 characters and not more than 155",
+        ".{80, 255}",
+        "Must have at least 80 characters and not more than 255, it should truncate at 155 charter",
       ],
     },
     { label: "Main Language", name: "lang", widget: "string" },

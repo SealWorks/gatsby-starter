@@ -1,0 +1,13 @@
+import { CmsField } from "netlify-cms-core"
+
+const descriptionField: CmsField = {
+  label: "Description",
+  name: "description",
+  widget: "string",
+  pattern: [
+    ".{20,500}",
+    "Must have at least 20 characters and not more than 500",
+  ],
+}
+
+export default descriptionField

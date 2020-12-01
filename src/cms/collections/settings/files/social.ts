@@ -1,4 +1,5 @@
 import { CmsCollectionFile } from "netlify-cms-core"
+import urlField from "../../../schemas/urlField"
 
 const collectionFile: CmsCollectionFile = {
   file: "content/settings/social.json",
@@ -22,7 +23,7 @@ const collectionFile: CmsCollectionFile = {
             { label: "Youtube", value: "youtube" },
           ],
         },
-        { label: "Link", name: "link", widget: "string" },
+        urlField
       ],
     },
   ],

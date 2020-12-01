@@ -1,5 +1,5 @@
 import { CmsCollection, CmsField } from "netlify-cms-core"
-import metadataField from "../../schemas/metadataField"
+import metadataField from "../../schemas/metadataObject"
 import slugField from "../../schemas/slugField"
 import templateKeyField from "../../schemas/templateKeyField"
 import pageTitleField from "../../schemas/pageTitleField"

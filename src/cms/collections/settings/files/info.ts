@@ -1,4 +1,5 @@
 import { CmsCollectionFile } from "netlify-cms-core"
+import urlField from "../../../schemas/urlField"
 
 const collectionFile: CmsCollectionFile = {
   file: "content/settings/info.json",
@@ -88,10 +89,7 @@ const collectionFile: CmsCollectionFile = {
           required: false,
         },
         {
-          label: "Link",
-          name: "link",
-          widget: "string",
-          default: "#",
+          ...urlField,
           required: false,
         },
         {

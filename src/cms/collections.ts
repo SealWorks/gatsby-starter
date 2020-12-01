@@ -13,6 +13,7 @@ import {
 } from "./collections/settings"
 import { authorsCollection } from "./collections/authors"
 import withChakra from "./withChakra"
+import { componentsCollection } from "./collections/components"
 // import withEmotion from "./withEmotion"
 
 export const collections = [
@@ -20,6 +21,7 @@ export const collections = [
   blogPostsCollection,
   blogCategoriesCollection,
   authorsCollection,
+  componentsCollection,
   uiCollection,
   settingsCollection,
 ]

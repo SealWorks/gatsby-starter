@@ -1,0 +1,12 @@
+{
+  "colors": [
+    {
+      "label": "brand-blue",
+      "color": "#275879"
+    },
+    {
+      "label": "brand-red",
+      "color": "#961e1e"
+    }
+  ]
+}

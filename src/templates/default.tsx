@@ -1,8 +1,8 @@
 import React from "react"
-import Layout from "../components/layouts/default"
+import DefaultLayout from "../components/layouts/DefaultLayout"
 
 const DefaultTemplate: React.FC = () => {
-  return <Layout>Hello World</Layout>
+  return <DefaultLayout>Hello World</DefaultLayout>
 }
 
 export default DefaultTemplate

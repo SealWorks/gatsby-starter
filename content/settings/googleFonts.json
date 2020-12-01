@@ -1,0 +1,15 @@
+{
+  "googleFonts": [
+    {
+      "googleFont": {
+        "label": "Sans",
+        "family": "Nunito",
+        "variants": [
+          "400",
+          "700",
+          "900"
+        ]
+      }
+    }
+  ]
+}

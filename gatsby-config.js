@@ -1,9 +1,12 @@
 const path = require("path")
 const siteMetadata = require("./content/settings/siteMetadata.json")
+const googleFonts = require("./content/settings/googleFonts.json")
 
 module.exports = {
   siteMetadata: {
     ...siteMetadata,
+    info: {},
+    social: [],
   },
   plugins: [
     `gatsby-plugin-netlify`,
@@ -58,6 +61,14 @@ module.exports = {
         ],
       },
     },
+
+    //Production Only
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //   options: {
+    //     fonts: googleFonts.fonts
+    //   },
+    // },
 
     //CMS
 

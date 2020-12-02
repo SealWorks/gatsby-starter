@@ -37,4 +37,8 @@ export function registerPreviews() {
     "manifest",
     withChakra(settingsPreviewTemplate.manifest)
   )
+  CMS.registerPreviewTemplate(
+    "colors",
+    withChakra(settingsPreviewTemplate.colors)
+  )
 }

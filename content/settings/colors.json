@@ -1,12 +1,18 @@
 {
   "colors": [
     {
-      "label": "brand-blue",
-      "color": "#275879"
+      "colors": [
+        "#2b516f",
+        "#4785b8",
+        "#3a6b92"
+      ],
+      "label": "brand"
     },
     {
-      "label": "brand-red",
-      "color": "#961e1e"
+      "label": "secondary",
+      "colors": [
+        "#c34242"
+      ]
     }
   ]
 }

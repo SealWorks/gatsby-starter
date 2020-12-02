@@ -8,34 +8,23 @@ const collectionFile: CmsCollectionFile = {
   name: "googleFonts",
   fields: [
     {
-      label: "Google Fonts",
-      name: "googleFonts",
+      label: "Fonts",
+      name: "fonts",
       widget: "list",
+      max: 3,
       fields: [
         {
-          label: "Google Font",
-          name: "googleFont",
-          widget: "object",
-          fields: [
-            {
-              label: "Reference Name (label)",
-              name: "label",
-              widget: "string",
-            },
-            {
-              label: "Family",
-              name: "family",
-              widget: "select",
-              options: googleFontsOptions,
-            },
-            {
-              label: "Variants",
-              name: "variants",
-              widget: "select",
-              multiple: true,
-              options: ["100", "200", "300", "400", "500", "600", "700", "900"],
-            },
-          ],
+          label: "Family",
+          name: "family",
+          widget: "select",
+          options: googleFontsOptions,
+        },
+        {
+          label: "Variants",
+          name: "variants",
+          widget: "select",
+          multiple: true,
+          options: ["100", "200", "300", "400", "500", "600", "700", "900"],
         },
       ],
     },

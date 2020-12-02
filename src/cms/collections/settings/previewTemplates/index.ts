@@ -1,3 +1,4 @@
 import manifest from "./manifest"
+import colors from "./colors"
 
-export { manifest }
+export { manifest, colors }

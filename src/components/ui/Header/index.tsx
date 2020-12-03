@@ -22,7 +22,12 @@ const Header: React.FC = () => {
       render={data => {
         const { logo, menu } = data.mdx.frontmatter
         return (
-          <Box as="header" bg={{ md: "brand.50" }} color={{ md: "#fff" }}>
+          <Box
+            as="header"
+            bg={{ base: "brand.50", md: "white" }}
+            color={{ base: "#fff", md: "black" }}
+            shadow={"base"}
+          >
             <Container>
               <Flex
                 as="nav"
@@ -32,7 +37,6 @@ const Header: React.FC = () => {
                 w="100%"
                 mb={8}
                 p={8}
-                color={{ md: "#fff" }}
               >
                 <Flex align="center">
                   <Image src={logo.relativePath} />
@@ -67,7 +71,17 @@ const Header: React.FC = () => {
                         mb={{ base: 8, sm: 0 }}
                         mr={{ base: 0, sm: 0 }}
                         display="block"
-                        __hover={{}}
+                        position="relative"
+                        __hover={{
+                          __before: {
+                            content: " ",
+                            position: "absolute",
+                            bottom: 0,
+                            border: 2,
+                            h: 2,
+                            borderColor: "brand.400",
+                          },
+                        }}
                       >
                         <Link href={item.link}>{item.label}</Link>
                       </Text>

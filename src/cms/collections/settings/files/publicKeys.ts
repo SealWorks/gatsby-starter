@@ -15,6 +15,16 @@ const collectionFile: CmsCollectionFile = {
       name: "tawkto",
       required: false,
     },
+    {
+      label: "Cloudinary",
+      name: "cloudinary",
+      widget: "object",
+      required: false,
+      fields: [
+        { label: "Cloud Name", name: "cloud_name" },
+        { label: "API Key", name: "api_key" },
+      ],
+    },
   ],
 }
 

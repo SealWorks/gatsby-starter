@@ -2,16 +2,26 @@
   "colors": [
     {
       "colors": [
-        "#2b516f",
-        "#4785b8",
-        "#3a6b92"
+        "#f00",
+        "#0f0",
+        "#00f",
+        "#ff0"
       ],
       "label": "brand"
     },
     {
-      "label": "secondary",
+      "label": "brando",
       "colors": [
-        "#c34242"
+        "#edf3f8",
+        "#d1e0ed",
+        "#b6cee2",
+        "#9bbcd7",
+        "#7fa9cc",
+        "#6497c1",
+        "#4984b6",
+        "#3e719b",
+        "#335d80",
+        "#284964"
       ]
     }
   ]

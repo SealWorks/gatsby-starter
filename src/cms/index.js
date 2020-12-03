@@ -2,11 +2,10 @@ import CMS from "netlify-cms-app"
 import { CmsConfig } from "netlify-cms-core"
 import { collections, registerPreviews } from "./collections"
 import { repository } from "../../package.json"
-interface LocalCmsConfig extends CmsConfig {
-  local_backend?: boolean | { url: string; allowed_hosts: string[] }
-}
+import cloudinary from "netlify-cms-media-library-cloudinary"
+import publicKeys from "../../content/settings/publicKeys.json"
 
-const config: LocalCmsConfig = {
+const config = {
   backend: {
     name: "github",
     branch: "dev",
@@ -14,10 +13,30 @@ const config: LocalCmsConfig = {
   },
   display_url: window.location.origin,
   publish_mode: "editorial_workflow",
-  media_folder: "static/img",
-  media_folder_relative: true,
-  public_folder: "/img",
   collections,
+}
+
+if (publicKeys.cloudinary) {
+  config.media_library = {
+    name: cloudinary,
+    config: publicKeys.cloudinary,
+    default_transformations: [
+      [
+        {
+          width: 2000,
+          quality: 80,
+          crop: "limit",
+        },
+      ],
+    ],
+  }
+} else {
+  config = {
+    ...config,
+    media_folder: "static/img",
+    media_folder_relative: true,
+    public_folder: "/img",
+  }
 }
 
 if (process.env.NODE_ENV === "development") {
@@ -29,5 +48,9 @@ if (process.env.NODE_ENV === "development") {
 }
 
 CMS.init({ config })
+
+if (publicKeys.cloudinary) {
+  CMS.registerMediaLibrary(cloudinary)
+}
 
 registerPreviews()

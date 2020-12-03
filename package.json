@@ -2,7 +2,7 @@
   "name": "gatsby-start-template",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/sealworks/gatsby-start-template",
+  "repository": "https://github.com/sealworks/gatsby-start",
   "author": "Pedro Moreno <nennogabriel@gmail.com>",
   "license": "0BSD",
   "scripts": {
@@ -48,7 +48,9 @@
     "gatsby-transformer-sharp": "^2.7.0",
     "mdx-scoped-runtime": "^0.7.5",
     "netlify-cms-app": "^2.13.3",
+    "netlify-cms-media-library-cloudinary": "^1.3.8",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "tinycolor2": "^1.4.2"
   }
 }

@@ -24,7 +24,6 @@ const collectionFile: CmsCollectionFile = {
           max: 10,
           minimize_collapsed: true,
           summary: "{{fields.color}}",
-          field: { name: "color", widget: "color" },
         },
       ],
     },

@@ -1,6 +1,6 @@
 import { CmsCollectionFile } from "netlify-cms-core"
 
-const collectionFile: CmsCollectionFile = {
+const publicKeysCollectionFile: CmsCollectionFile = {
   file: "content/settings/publicKeys.json",
   label: "Public Keys",
   name: "publicKeys",
@@ -21,11 +21,18 @@ const collectionFile: CmsCollectionFile = {
       widget: "object",
       required: false,
       fields: [
-        { label: "Cloud Name", name: "cloud_name" },
-        { label: "API Key", name: "api_key" },
+        { label: "Cloud Name", name: "cloud_name", required: false },
+        { label: "API Key", name: "api_key", required: false },
       ],
+    },
+    {
+      label: "Uploadcare",
+      name: "uploadcare",
+      widget: "object",
+      required: false,
+      fields: [{ label: "Public Key", name: "publicKey", required: false }],
     },
   ],
 }
 
-export default collectionFile
+export default publicKeysCollectionFile

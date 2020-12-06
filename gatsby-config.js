@@ -28,37 +28,34 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `@chakra-ui/gatsby-plugin`,
 
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    `gatsby-remark-images`,
+    // #only for local image transformation
+    // `gatsby-plugin-sharp`,
+    // `gatsby-transformer-sharp`,
+    // `gatsby-remark-images`,
 
     {
       resolve: "gatsby-plugin-mdx",
       options: {
         extensions: [".mdx", ".md"],
-        gatsbyRemarkPlugins: [
-          "gatsby-remark-copy-linked-files",
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              quality: 80,
-              maxWidth: 1800,
-              options: {
-                quality: 95,
-                maxWidth: 1800,
-                sizeByPixelDensity: true,
-                srcSetBreakpoints: [200, 420, 720, 900, 1200],
-              },
-              backgroundColor: "#999",
-              withWebp: { quality: 80 },
-              showCaptions: true,
-              linkImagesToOriginal: false,
-              defaultLayouts: {
-                default: require.resolve("./src/templates/default.tsx"),
-              },
-            },
-          },
-        ],
+        // gatsbyRemarkPlugins: [
+        //   "gatsby-remark-copy-linked-files",
+        //   {
+        //     resolve: "gatsby-remark-images",
+        //     options: {
+        //       quality: 80,
+        //       maxWidth: 1600,
+        //       sizeByPixelDensity: true,
+        //       srcSetBreakpoints: [200, 420, 720, 900, 1200],
+        //       backgroundColor: "#999",
+        //       withWebp: { quality: 80 },
+        //       showCaptions: true,
+        //       linkImagesToOriginal: false,
+        //     },
+        //   },
+        // ],
+        defaultLayouts: {
+          default: require.resolve("./src/templates/default.tsx"),
+        },
       },
     },
 
@@ -76,7 +73,7 @@ module.exports = {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
         manualInit: true,
-        modulePath: path.join(__dirname, `src`, `cms`, `index.ts`),
+        modulePath: path.join(__dirname, `src`, `cms`, `index.js`),
         // stylesPath: path.join(__dirname, `src`, `cms`, `admin.css`),
         // enableIdentityWidget: true, // Netlify identity
         publicPath: `_admin`,

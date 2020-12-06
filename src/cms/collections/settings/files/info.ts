@@ -1,7 +1,7 @@
 import { CmsCollectionFile } from "netlify-cms-core"
-import urlField from "../../../schemas/urlField"
+import urlField from "../../../schemas/fields/urlField"
 
-const collectionFile: CmsCollectionFile = {
+const infoCollectionFile: CmsCollectionFile = {
   file: "content/settings/info.json",
   label: "General Business Info",
   name: "info",
@@ -154,4 +154,4 @@ const collectionFile: CmsCollectionFile = {
   ],
 }
 
-export default collectionFile
+export default infoCollectionFile

@@ -1,7 +1,7 @@
 import { CmsCollectionFile } from "netlify-cms-core"
-import urlField from "../../../schemas/urlField"
+import urlField from "../../../schemas/fields/urlField"
 
-const collectionFile: CmsCollectionFile = {
+const socialCollectionFile: CmsCollectionFile = {
   file: "content/settings/social.json",
   label: "Social Network",
   name: "social",
@@ -23,10 +23,10 @@ const collectionFile: CmsCollectionFile = {
             { label: "Youtube", value: "youtube" },
           ],
         },
-        urlField
+        urlField,
       ],
     },
   ],
 }
 
-export default collectionFile
+export default socialCollectionFile

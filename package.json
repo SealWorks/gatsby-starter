@@ -2,17 +2,17 @@
   "name": "gatsby-start-template",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/sealworks/gatsby-start",
+  "repository": "https://github.com/sealworks/gatsby-starter",
   "author": "Pedro Moreno <nennogabriel@gmail.com>",
   "license": "0BSD",
   "scripts": {
-    "proxy:cms": "npx netlify-cms-proxy-server",
+    "cms:proxy": "npx netlify-cms-proxy-server",
     "develop": "gatsby develop",
-    "develop:host": "gatsby develop -H 0.0.0.0",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.js\"",
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "serve": "gatsby clean && gatsby build && gatsby serve -H 0.0.0.0"
+    "serve": "gatsby clean && gatsby build && gatsby serve -H 0.0.0.0",
+    "serve:test": "gatsby build && gatsby serve -H 0.0.0.0"
   },
   "devDependencies": {
     "@types/react-dom": "^17.0.0",
@@ -49,6 +49,7 @@
     "mdx-scoped-runtime": "^0.7.5",
     "netlify-cms-app": "^2.13.3",
     "netlify-cms-media-library-cloudinary": "^1.3.8",
+    "netlify-cms-media-library-uploadcare": "^0.5.9",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "tinycolor2": "^1.4.2"

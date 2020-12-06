@@ -1,6 +1,6 @@
 import { CmsCollectionFile } from "netlify-cms-core"
 
-const collectionFile: CmsCollectionFile = {
+const manifestCollectionFile: CmsCollectionFile = {
   file: "content/settings/manifest.json",
   label: "Manifest",
   name: "manifest",
@@ -31,8 +31,15 @@ const collectionFile: CmsCollectionFile = {
       options: ["standalone"],
       default: ["standalone"],
     },
-    { label: "Icon", name: "icon", widget: "image" },
+    {
+      label: "Icon",
+      name: "icon",
+      widget: "image",
+      media_library: {
+        name: "github",
+      },
+    },
   ],
 }
 
-export default collectionFile
+export default manifestCollectionFile

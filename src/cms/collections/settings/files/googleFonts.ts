@@ -1,7 +1,7 @@
 import { CmsCollectionFile } from "netlify-cms-core"
 import googleFontsOptions from "./googleFontsOptions.json"
 
-const collectionFile: CmsCollectionFile = {
+const googleFontsCollectionFile: CmsCollectionFile = {
   file: "content/settings/googleFonts.json",
   label: "Google Fonts",
   label_singular: "Google Font",
@@ -31,4 +31,4 @@ const collectionFile: CmsCollectionFile = {
   ],
 }
 
-export default collectionFile
+export default googleFontsCollectionFile

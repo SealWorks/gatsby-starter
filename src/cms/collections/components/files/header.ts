@@ -1,9 +1,9 @@
 import { CmsCollectionFile } from "netlify-cms-core"
-import colorRelationField from "../../../schemas/colorRelationField"
-import componentKeyField from "../../../schemas/componentKeyField"
-import linkField from "../../../schemas/linkField"
+import colorRelationField from "../../../schemas/fields/colorRelationField"
+import componentKeyField from "../../../schemas/fields/componentKeyField"
+import linkField from "../../../schemas/fields/linkField"
 
-const homePage: CmsCollectionFile = {
+const homePageCollectionFile: CmsCollectionFile = {
   file: "content/components/header.mdx",
   label: "Header",
   name: "header",
@@ -42,4 +42,4 @@ const homePage: CmsCollectionFile = {
   ],
 }
 
-export default homePage
+export default homePageCollectionFile

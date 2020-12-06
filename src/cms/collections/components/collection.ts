@@ -7,7 +7,7 @@ const collection: CmsCollection = {
   extension: "mdx",
   format: "frontmatter",
   media_folder: "../../static/img",
-  public_folder: "../../static/img",
+  public_folder: "/img",
   files: [button],
 }
 

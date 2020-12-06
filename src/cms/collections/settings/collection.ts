@@ -13,7 +13,7 @@ const collection: CmsCollection = {
   extension: "json",
   format: "json",
   media_folder: "../../static/img",
-  public_folder: "../../static/img",
+  public_folder: "/img",
   files: [
     socialCollectionFile,
     infoCollectionFile,

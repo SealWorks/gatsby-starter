@@ -6,9 +6,9 @@ const colorRelationField: CmsField = {
   widget: "relation",
   collection: "settings",
   file: "colors",
-  value_field: "colors.*.color",
-  display_fields: ["colors.*.color", "colors.*.label"],
-  search_fields: ["colors.*.label"],
+  value_field: "colors.*.colorsRefs.*",
+  display_fields: ["colors.*.colorsRefs.*"],
+  search_fields: ["colors.*.colors.*", "colors.*.label"],
 }
 
 export default colorRelationField

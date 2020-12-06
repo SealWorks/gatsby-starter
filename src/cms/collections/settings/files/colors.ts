@@ -1,6 +1,6 @@
 import { CmsCollectionFile } from "netlify-cms-core"
 
-const collectionFile: CmsCollectionFile = {
+const colorsCollectionFile: CmsCollectionFile = {
   file: "content/settings/colors.json",
   label: "Palette Colors",
   label_singular: "Palette Color",
@@ -23,11 +23,19 @@ const collectionFile: CmsCollectionFile = {
           min: 1,
           max: 10,
           minimize_collapsed: true,
-          summary: "{{fields.color}}",
+        },
+        {
+          label: "Colors Reference Names",
+          name: "colorsRefs",
+          widget: "list",
+          min: 1,
+          max: 10,
+          minimize_collapsed: true,
+          required: false,
         },
       ],
     },
   ],
 }
 
-export default collectionFile
+export default colorsCollectionFile

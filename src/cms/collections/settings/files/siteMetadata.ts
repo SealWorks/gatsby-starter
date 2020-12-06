@@ -1,9 +1,9 @@
 import { CmsCollectionFile } from "netlify-cms-core"
-import descriptionField from "../../../schemas/descriptionField"
-import metadataField from "../../../schemas/metadataObject"
-import urlField from "../../../schemas/urlField"
+import descriptionField from "../../../schemas/fields/descriptionField"
+import metadataField from "../../../schemas/components/metadataObject"
+import urlField from "../../../schemas/fields/urlField"
 
-const collectionFile: CmsCollectionFile = {
+const siteMetadataCollectionFile: CmsCollectionFile = {
   file: "content/settings/siteMetadata.json",
   label: "Site Metadata",
   name: "siteMetadata",
@@ -43,4 +43,4 @@ const collectionFile: CmsCollectionFile = {
   ],
 }
 
-export default collectionFile
+export default siteMetadataCollectionFile

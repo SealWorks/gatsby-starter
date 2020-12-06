@@ -1,11 +1,13 @@
 import CMS from "netlify-cms-app"
-import { CmsConfig } from "netlify-cms-core"
+// import { CmsConfig } from "netlify-cms-core"
 import { collections, registerPreviews } from "./collections"
 import { repository } from "../../package.json"
 import cloudinary from "netlify-cms-media-library-cloudinary"
+import uploadcare from "netlify-cms-media-library-uploadcare"
 import publicKeys from "../../content/settings/publicKeys.json"
+import { registerEvents } from "./betafeatures"
 
-const config = {
+let config = {
   backend: {
     name: "github",
     branch: "dev",
@@ -13,22 +15,46 @@ const config = {
   },
   display_url: window.location.origin,
   publish_mode: "editorial_workflow",
+  slug: {
+    encoding: "unicode",
+    clean_accents: true,
+  },
   collections,
 }
 
-if (publicKeys.cloudinary) {
+if (publicKeys?.cloudinary?.api_key) {
+  CMS.registerMediaLibrary(cloudinary)
   config.media_library = {
-    name: cloudinary,
+    name: "cloudinary",
     config: publicKeys.cloudinary,
     default_transformations: [
       [
         {
-          width: 2000,
-          quality: 80,
+          width: 1600,
+          height: 1200,
+          quality: "auto",
           crop: "limit",
         },
       ],
     ],
+  }
+} else if (publicKeys?.uploadcare?.publicKey) {
+  CMS.registerMediaLibrary(uploadcare)
+  config.media_library = {
+    name: "uploadcare",
+    config: publicKeys.uploadcare,
+    settings: {
+      autoFilename: true,
+      imagesOnly: true,
+      defaultOperations: "/resize/1200x800/",
+      imageShrink: "1200x1200",
+      fadeIn: true,
+      lazyload: true,
+      smartCompression: true,
+      responsive: true,
+      retina: true,
+      webp: true,
+    },
   }
 } else {
   config = {
@@ -36,6 +62,7 @@ if (publicKeys.cloudinary) {
     media_folder: "static/img",
     media_folder_relative: true,
     public_folder: "/img",
+    max_file_size: 512000,
   }
 }
 
@@ -49,8 +76,6 @@ if (process.env.NODE_ENV === "development") {
 
 CMS.init({ config })
 
-if (publicKeys.cloudinary) {
-  CMS.registerMediaLibrary(cloudinary)
-}
-
 registerPreviews()
+
+registerEvents()

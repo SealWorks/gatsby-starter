@@ -14,7 +14,7 @@ import {
 import { authorsCollection } from "./collections/authors"
 import withChakra from "./withChakra"
 import { componentsCollection } from "./collections/components"
-// import withEmotion from "./withEmotion"
+import { faviconCollection } from "./collections/favicon"
 
 export const collections = [
   pagesCollection,
@@ -24,6 +24,7 @@ export const collections = [
   componentsCollection,
   uiCollection,
   settingsCollection,
+  faviconCollection,
 ]
 
 export function registerPreviews() {

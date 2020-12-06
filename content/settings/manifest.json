@@ -1,5 +1,5 @@
 {
-  "icon": "/img/logo.svg",
+  "icon": "../../static/img/logo-verbasa.svg",
   "name": "Teste",
   "short_name": "teste",
   "start_url": "/",

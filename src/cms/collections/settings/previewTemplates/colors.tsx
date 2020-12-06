@@ -25,7 +25,7 @@ const PreviewTemplate: ComponentType<PreviewTemplateComponentProps> = ({
 }) => {
   const data = entry.getIn(["data"]).toJS()
 
-  if (isLoadingAsset) {
+  if (isLoadingAsset || !data?.colors) {
     return <div>Loading ...</div>
   } else {
     return (

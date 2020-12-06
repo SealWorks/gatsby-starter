@@ -1,27 +1,30 @@
 {
   "colors": [
     {
+      "label": "brand",
       "colors": [
-        "#f00",
-        "#0f0",
-        "#00f",
-        "#ff0"
+        "#94f7c9",
+        "#70f4b6",
+        "#4df1a4",
+        "#29ef92",
+        "#11e180",
+        "#0ebd6b",
+        "#0c9a57",
+        "#097643",
+        "#06522f",
+        "#042f1b"
       ],
-      "label": "brand"
-    },
-    {
-      "label": "brando",
-      "colors": [
-        "#edf3f8",
-        "#d1e0ed",
-        "#b6cee2",
-        "#9bbcd7",
-        "#7fa9cc",
-        "#6497c1",
-        "#4984b6",
-        "#3e719b",
-        "#335d80",
-        "#284964"
+      "colorsRefs": [
+        "brand.50",
+        "brand.100",
+        "brand.200",
+        "brand.300",
+        "brand.400",
+        "brand.500",
+        "brand.600",
+        "brand.700",
+        "brand.800",
+        "brand.900"
       ]
     }
   ]

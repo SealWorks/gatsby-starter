@@ -1,10 +1,11 @@
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react"
+import { Box, Button, Flex, Icon, Image, Text } from "@chakra-ui/react"
 import { graphql, StaticQuery } from "gatsby"
 import React, { useCallback, useState } from "react"
 import Container from "../../layout/Container"
 import Link from "../../mdx/Link"
+import SVGIcon from "../SVGIcon"
 import BurgerMenuIcon from "./BurgerMenuIcon"
-
+import logo from "../../../../static/img/logo.svg"
 interface menuItemProps {
   label: string
   link: string
@@ -39,7 +40,7 @@ const Header: React.FC = () => {
                 p={8}
               >
                 <Flex align="center">
-                  <Image src={logo.relativePath} />
+                  <SVGIcon name="logo-verbasa" height={50} width={250} />
                 </Flex>
                 <Box display={{ base: "block", md: "none" }}>
                   <BurgerMenuIcon

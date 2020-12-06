@@ -1,8 +1,8 @@
 import { CmsCollection, CmsField } from "netlify-cms-core"
-import metadataField from "../../schemas/metadataObject"
-import slugField from "../../schemas/slugField"
-import templateKeyField from "../../schemas/templateKeyField"
-import pageTitleField from "../../schemas/pageTitleField"
+import metadataField from "../../schemas/components/metadataObject"
+import slugField from "../../schemas/fields/slugField"
+import templateKeyField from "../../schemas/fields/templateKeyField"
+import pageTitleField from "../../schemas/fields/pageTitleField"
 
 const fields: CmsField[] = [
   {
@@ -19,11 +19,11 @@ const collection: CmsCollection = {
   label: "Blog Categories",
   label_singular: "Blog Category",
   name: "blogCategory",
-  folder: "content/pages/blog/category",
+  folder: "content/blog/category",
   extension: "mdx",
   format: "frontmatter",
-  media_folder: "../../../static/img",
-  public_folder: "../../../static/img",
+  media_folder: "../../../static/img/blog",
+  public_folder: "/img/blog",
   fields,
 }
 

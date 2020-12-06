@@ -1,5 +1,5 @@
 import { CmsField } from "netlify-cms-core"
-import descriptionField from "./descriptionField"
+import descriptionField from "../fields/descriptionField"
 
 const metadataObject: CmsField = {
   label: "Metadata",

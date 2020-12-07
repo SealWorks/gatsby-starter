@@ -1,6 +1,6 @@
 import { CmsField } from "netlify-cms-core"
 
-const templateKeyField: CmsField = {
+const componentKeyField: CmsField = {
   label: "Component Key",
   name: "componentKey",
   widget: "select",
@@ -8,4 +8,4 @@ const templateKeyField: CmsField = {
   default: ["none"],
 }
 
-export default templateKeyField
+export default componentKeyField

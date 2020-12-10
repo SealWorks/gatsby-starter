@@ -1,6 +1,7 @@
 import React from "react"
 import { Link as GatsbyLink } from "gatsby"
-// import { OutboundLink } from 'gatsby-plugin-gtag';
+import { chakra, Link as ChakraLink } from "@chakra-ui/react"
+import { OutboundLink } from "gatsby-plugin-gtag"
 
 const Link = ({ children, href, ...rest }) => {
   const internal = /^\/(?!\/)/.test(href)
@@ -8,23 +9,30 @@ const Link = ({ children, href, ...rest }) => {
   if (internal) {
     if (href === "/_admin") {
       return (
-        <a href={href} {...rest}>
+        <ChakraLink href={href} {...rest} display="block">
           {children}
-        </a>
+        </ChakraLink>
       )
     }
     return (
-      <GatsbyLink to={href} {...rest}>
+      <ChakraLink as={GatsbyLink} to={href} {...rest} display="block">
         {children}
-      </GatsbyLink>
+      </ChakraLink>
     )
   }
 
   return (
-    <a href={href} {...rest} target="_blank" rel="noopener noreferrer">
+    <ChakraLink
+      as={OutboundLink}
+      href={href}
+      {...rest}
+      target="_blank"
+      rel="noopener noreferrer"
+      display="block"
+    >
       {children}
-    </a>
+    </ChakraLink>
   )
 }
 
-export default Link
+export default chakra(Link)

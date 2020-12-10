@@ -1,23 +1,25 @@
 import { CmsCollectionFile } from "netlify-cms-core"
-import colorRelationField from "../../../schemas/fields/colorRelationField"
 import componentKeyField from "../../../schemas/fields/componentKeyField"
 import linkField from "../../../schemas/fields/linkField"
+import iconField from "../../../schemas/fields/iconField"
+import buttonGroupField from "../../../schemas/components/buttonsGroup"
 
-const homePageCollectionFile: CmsCollectionFile = {
+const headerCollectionFile: CmsCollectionFile = {
   file: "content/components/header.mdx",
   label: "Header",
   name: "header",
   fields: [
     { ...componentKeyField, options: ["header"], default: ["header"] },
     {
+      ...iconField,
       label: "Logo",
       name: "logo",
-      widget: "image",
     },
     {
       label: "Menu",
       name: "menu",
       widget: "list",
+      max: 10,
       fields: [
         {
           label: "Label",
@@ -28,18 +30,11 @@ const homePageCollectionFile: CmsCollectionFile = {
       ],
     },
     {
-      label: "Design",
-      name: "design",
-      widget: "object",
-      fields: [
-        {
-          ...colorRelationField,
-          label: "Background Color",
-          name: "bg",
-        },
-      ],
+      ...buttonGroupField,
+      max: 2,
+
     },
   ],
 }
 
-export default homePageCollectionFile
+export default headerCollectionFile

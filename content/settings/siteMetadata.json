@@ -1,12 +1,12 @@
 {
-  "siteUrl": "https://gatsby-starter.seal.works",
-  "author": "@wwwsealworks",
-  "logo": "/img/logo.svg",
-  "thumbnail": "/img/logo.svg",
-  "lang": "EN",
-  "title": "Gatsby Starter",
-  "publisher": "@wwwsealworks",
-  "description": "A simple and fun way to develop a website. Make your business online today with this project.",
+  "siteUrl": "https://verbasa.com.br",
+  "author": "@verbasa1",
+  "logo": "/img/logo-verbasa.svg",
+  "thumbnail": "https://res.cloudinary.com/nennogabriel/image/upload/v1607367321/Verbasa/ogimage_a3knjq.jpg",
+  "lang": "pt-BR",
+  "title": "Verbasa ",
+  "publisher": "@verbasa1",
+  "description": "De profissionais para profissionais! A melhor e mais desejada mesa proprietária do Brasil. Seja um de nossos traders.",
   "slogan": "The fun way",
-  "logoAlt": "/img/logo.svg"
+  "logoAlt": "/img/logo-verbasa-alt.svg"
 }

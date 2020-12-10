@@ -1,12 +1,14 @@
 const path = require("path")
 const siteMetadata = require("./content/settings/siteMetadata.json")
 const googleFonts = require("./content/settings/googleFonts.json")
+const info = require("./content/settings/info.json")
+const social = require("./content/settings/social.json")
 
 module.exports = {
   siteMetadata: {
     ...siteMetadata,
-    info: {},
-    social: [],
+    info,
+    social: social?.socialNetworks,
   },
 
   plugins: [

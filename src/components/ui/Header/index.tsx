@@ -1,92 +1,137 @@
-import { Box, Button, Flex, Icon, Image, Text } from "@chakra-ui/react"
+import {
+  Box,
+  Flex,
+  Button,
+  ButtonGroup,
+  ListItem,
+  useDisclosure,
+  LinkProps,
+} from "@chakra-ui/react"
 import { graphql, StaticQuery } from "gatsby"
-import React, { useCallback, useState } from "react"
+import React from "react"
 import Container from "../../layout/Container"
 import Link from "../../mdx/Link"
 import SVGIcon from "../SVGIcon"
 import BurgerMenuIcon from "./BurgerMenuIcon"
-import logo from "../../../../static/img/logo.svg"
-interface menuItemProps {
-  label: string
-  link: string
+
+interface DataProps {
+  mdx: {
+    body: string
+    frontmatter: {
+      logo: string
+      menu: Array<{
+        label: string
+        link: string
+      }>
+      buttons: Array<{
+        label: string
+        link: string
+        variant: "solid" | "ghost" | "outline" | "link"
+        colorScheme: string
+      }>
+    }
+  }
+}
+
+const MenuItem: React.FC<LinkProps> = ({ children, href }) => {
+  return (
+    <ListItem
+      position="relative"
+      p={3}
+      pb={1}
+      _after={{
+        content: `" "`,
+        position: "absolute",
+        borderBottom: "2px",
+        borderColor: "brand.500",
+        bottom: 0,
+        left: "50%",
+        w: "0%",
+        h: 0,
+        transform: "translateX(-50%)",
+        transition: "all",
+        transitionDuration: "220ms",
+      }}
+      _hover={{
+        _after: {
+          w: "50%",
+        },
+      }}
+    >
+      <Link href={href} _hover={{ textDecoration: "none" }}>
+        {children}
+      </Link>
+    </ListItem>
+  )
 }
 
 const Header: React.FC = () => {
-  const [isNavbarOpen, setIsNavbarOpen] = useState(false)
-  const toggleNavbarMenu = useCallback(() => {
-    console.log("toggle")
-    setIsNavbarOpen(!isNavbarOpen)
-  }, [isNavbarOpen])
+  const { isOpen, onToggle } = useDisclosure()
+
   return (
     <StaticQuery
       query={query}
-      render={data => {
-        const { logo, menu } = data.mdx.frontmatter
+      render={(data: DataProps) => {
+        const { logo, menu, buttons } = data.mdx.frontmatter
         return (
-          <Box
-            as="header"
-            bg={{ base: "brand.50", md: "white" }}
-            color={{ base: "#fff", md: "black" }}
-            shadow={"base"}
-          >
+          <Box as="header" bg={"white"} color={"black"} shadow={"base"}>
             <Container>
-              <Flex
-                as="nav"
-                align="center"
-                justify="space-between"
-                wrap="wrap"
-                w="100%"
-                mb={8}
-                p={8}
-              >
-                <Flex align="center">
-                  <SVGIcon name="logo-verbasa" height={50} width={250} />
+              <Flex direction={{ base: "column", md: "row" }}>
+                <Flex
+                  items="center"
+                  justify={{ base: "space-between", md: "flex-start" }}
+                >
+                  <Box display={{ base: "block", md: "none" }} w={8} pt={2}>
+                    <BurgerMenuIcon
+                      toggleNavbarMenu={onToggle}
+                      isNavbarOpen={isOpen}
+                      outline="none"
+                    />
+                  </Box>
+                  <Link href="/">
+                    <SVGIcon name={logo} h={10} w="auto" mr={{ md: 4 }} />
+                  </Link>
+                  <Box display={{ base: "block", md: "none" }} w={8}></Box>
                 </Flex>
-                <Box display={{ base: "block", md: "none" }}>
-                  <BurgerMenuIcon
-                    toggleNavbarMenu={toggleNavbarMenu}
-                    isNavbarOpen={isNavbarOpen}
-                  />
-                </Box>
                 <Box
-                  display={{
-                    base: isNavbarOpen ? "block" : "none",
-                    md: "block",
-                  }}
-                  flexBasis={{ base: "100%", md: "auto" }}
+                  as="nav"
+                  display={{ base: isOpen ? "block" : "none", md: "block" }}
+                  w="100%"
                 >
                   <Flex
-                    align={["center", "center", "center", "center"]}
-                    justify={[
-                      "center",
-                      "space-between",
-                      "flex-end",
-                      "flex-end",
-                    ]}
-                    direction={["column", "row", "row", "row"]}
-                    pt={[4, 4, 0, 0]}
+                    w="100%"
+                    direction={{ base: "column", md: "row" }}
+                    justify="space-between"
+                    align="center"
                   >
-                    {menu.map((item: menuItemProps) => (
-                      <Text
-                        key={item.label}
-                        mb={{ base: 8, sm: 0 }}
-                        mr={{ base: 0, sm: 0 }}
-                        display="block"
-                        position="relative"
-                        __hover={{
-                          __before: {
-                            content: " ",
-                            position: "absolute",
-                            bottom: 0,
-                            border: 2,
-                            h: 2,
-                            borderColor: "brand.400",
-                          },
-                        }}
-                      >
-                        <Link href={item.link}>{item.label}</Link>
-                      </Text>
-                    ))}
+                    <Flex
+                      as="ul"
+                      direction={{ base: "column", md: "row" }}
+                      justify="center"
+                      align="center"
+                      listStyleType="none"
+                    >
+                      {menu.map(menuItem => (
+                        <MenuItem key={menuItem.label} href={menuItem.link}>
+                          {menuItem.label}
+                        </MenuItem>
+                      ))}
+                    </Flex>
+                    <Flex justify="center" align="center">
+                      <ButtonGroup>
+                        {buttons.map(button => (
+                          <Button
+                            key={button.label}
+                            as="a"
+                            href={button.link}
+                            colorScheme={button.colorScheme}
+                            variant={button.variant}
+                          >
+                            {button.label}
+                          </Button>
+                        ))}
+                      </ButtonGroup>
+                    </Flex>
                   </Flex>
                 </Box>
               </Flex>
@@ -104,12 +149,16 @@ const query = graphql`
   query {
     mdx(frontmatter: { componentKey: { eq: "header" } }) {
       frontmatter {
-        logo {
-          relativePath
-        }
+        logo
         menu {
           label
           link
+        }
+        buttons {
+          label
+          link
+          variant
+          colorScheme
         }
       }
     }

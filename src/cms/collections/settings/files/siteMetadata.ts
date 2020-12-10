@@ -13,9 +13,10 @@ const siteMetadataCollectionFile: CmsCollectionFile = {
     {
       ...descriptionField,
       label: "Default Description",
+
       pattern: [
-        ".{80, 255}",
-        "Must have at least 80 characters and not more than 255, it should truncate at 155 charter",
+        ".{20,255}",
+        "Must have at least 20 characters and not more than 255",
       ],
     },
     { label: "Main Language", name: "lang", widget: "string" },

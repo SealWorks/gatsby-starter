@@ -57,13 +57,12 @@ const PreviewTemplate: ComponentType<PreviewTemplateComponentProps> = ({
                     <HStack wrap={"wrap"} spacing={0}>
                       {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(i => {
                         const refColor = tc(colorSet.colors[0])
-                        const bLevel =
-                          Math.round((255 - refColor.getBrightness()) / 25) % 10
+                        const bLevel = 5 // Math.round((255 - refColor.getBrightness()) / 25) % 10
                         if (i < bLevel) {
-                          refColor.lighten(7.5 * (bLevel - i))
+                          refColor.lighten(6.18 * (bLevel - i))
                         }
                         if (i > bLevel) {
-                          refColor.darken(7.5 * (i - bLevel))
+                          refColor.darken(6.18 * (i - bLevel))
                         }
 
                         return (

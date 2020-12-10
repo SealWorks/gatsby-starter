@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react"
 import React from "react"
+import { chakra } from "@chakra-ui/react"
 
 const Container: React.FC = ({ children, ...rest }) => {
   return (
@@ -16,4 +17,4 @@ const Container: React.FC = ({ children, ...rest }) => {
   )
 }
 
-export default Container
+export default chakra(Container)

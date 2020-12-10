@@ -1,5 +1,6 @@
 import { CmsCollection } from "netlify-cms-core"
-import button from "./files/header"
+import header from "./files/header"
+import footer from "./files/footer"
 
 const collection: CmsCollection = {
   label: "Components",
@@ -8,7 +9,7 @@ const collection: CmsCollection = {
   format: "frontmatter",
   media_folder: "../../static/img",
   public_folder: "/img",
-  files: [button],
+  files: [header, footer],
 }
 
 export default collection

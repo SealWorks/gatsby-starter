@@ -1,9 +1,9 @@
 import React from "react"
-import { Box, Button, chakra } from "@chakra-ui/react"
+import { Box, Button, ButtonProps, chakra } from "@chakra-ui/react"
 
 const styles = require("./styles.module.css")
 
-interface BurgerMenuIconProps {
+interface BurgerMenuIconProps extends ButtonProps {
   toggleNavbarMenu(): void
   isNavbarOpen: boolean
 }
@@ -11,6 +11,7 @@ interface BurgerMenuIconProps {
 const BurgerMenuIcon: React.FC<BurgerMenuIconProps> = ({
   toggleNavbarMenu,
   isNavbarOpen,
+  ...rest
 }) => {
   return (
     <Button
@@ -19,6 +20,8 @@ const BurgerMenuIcon: React.FC<BurgerMenuIconProps> = ({
       bg="transparent"
       _hover={{ bg: "transparent" }}
       _active={{ bg: "transparent" }}
+      _focus={{ boxShadow: "none" }}
+      {...rest}
     >
       <Box className={isNavbarOpen ? styles.open : ""}>
         <chakra.span>&nbsp;</chakra.span>

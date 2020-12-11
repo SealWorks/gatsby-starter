@@ -11,7 +11,7 @@ const cardsObject: CmsField = {
     { label: "Title", name: "title", widget: "string" },
     iconField,
     { label: "Text", name: "text", widget: "string", required: false },
-    linkField,
+    { ...linkField, required: false },
   ],
 }
 

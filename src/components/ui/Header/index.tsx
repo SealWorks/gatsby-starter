@@ -122,7 +122,7 @@ const Header: React.FC = () => {
                         {buttons.map(button => (
                           <Button
                             key={button.label}
-                            as="a"
+                            as={Link}
                             href={button.link}
                             colorScheme={button.colorScheme}
                             variant={button.variant}

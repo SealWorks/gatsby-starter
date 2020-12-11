@@ -8,7 +8,7 @@ module.exports = {
   siteMetadata: {
     ...siteMetadata,
     info,
-    social: social?.socialNetworks,
+    social,
   },
 
   plugins: [
@@ -49,12 +49,17 @@ module.exports = {
     },
 
     //Production Only
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: googleFonts.fonts,
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: googleFonts.fonts.map(
+            font => `${font.family}:${font.variants}`
+          ),
+        },
+        timeout: 2000,
+      },
+    },
 
     //CMS
 

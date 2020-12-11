@@ -1,5 +1,5 @@
 import { CmsCollectionFile } from "netlify-cms-core"
-import cardsObject from "../../../schemas/components/cardsGroup"
+import cardsGroup from "../../../schemas/components/cardsGroup"
 import metadataObject from "../../../schemas/components/metadataObject"
 import buttonFields from "../../../schemas/fields/buttonFields"
 import buttonGroupField from "../../../schemas/components/buttonsGroup"
@@ -38,7 +38,7 @@ const homePageCollection: CmsCollectionFile = {
       widget: "object",
       fields: [
         { label: "Title", name: "title", widget: "string" },
-        cardsObject,
+        cardsGroup,
         buttonsGroup,
       ],
     },
@@ -46,10 +46,7 @@ const homePageCollection: CmsCollectionFile = {
       label: "Description",
       name: "description",
       widget: "object",
-      fields: [
-        { label: "Title", name: "title", widget: "string" },
-        cardsObject,
-      ],
+      fields: [{ label: "Title", name: "title", widget: "string" }, cardsGroup],
     },
     {
       label: "Body (of Description)",

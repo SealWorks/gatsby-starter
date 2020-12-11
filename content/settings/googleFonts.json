@@ -1,8 +1,12 @@
 {
   "fonts": [
     {
-      "family": "Nunito",
-      "variants": ["400", "700", "900"]
+      "family": "Nunito Sans",
+      "variants": [
+        "400",
+        "700",
+        "900"
+      ]
     }
   ]
 }

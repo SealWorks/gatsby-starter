@@ -1,6 +1,6 @@
 import CMS from "netlify-cms-app"
 
-import { pagesCollection } from "./collections/pages"
+import { pagesCollection, pagesPreviewTemplate } from "./collections/pages"
 import { blogPostsCollection, blogPostsTemplate } from "./collections/blogPosts"
 import {
   blogCategoriesCollection,
@@ -29,6 +29,7 @@ export const collections = [
 
 export function registerPreviews() {
   // CMS.registerPreviewTemplate(pagesCollection.name, withChakra(pagesTemplate))
+  CMS.registerPreviewTemplate("home", withChakra(pagesPreviewTemplate.home))
   CMS.registerPreviewTemplate(blogPostsCollection.name, blogPostsTemplate)
   CMS.registerPreviewTemplate(
     blogCategoriesCollection.name,

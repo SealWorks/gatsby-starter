@@ -31,7 +31,7 @@ const PreviewTemplate: ComponentType<PreviewTemplateComponentProps> = ({
     return (
       <>
         {data.colors.map((colorSet: colorSetProps) => (
-          <>
+          <div key={colorSet.label}>
             {!!colorSet.label && (
               <Box key={colorSet.label}>
                 <Text key={colorSet.label}>{colorSet.label}</Text>
@@ -86,7 +86,7 @@ const PreviewTemplate: ComponentType<PreviewTemplateComponentProps> = ({
                 )}
               </Box>
             )}
-          </>
+          </div>
         ))}
       </>
     )

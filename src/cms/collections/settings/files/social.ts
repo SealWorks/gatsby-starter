@@ -8,7 +8,7 @@ const socialCollectionFile: CmsCollectionFile = {
   fields: [
     {
       label: "Social Networks",
-      name: "socialNetworks",
+      name: "networks",
       widget: "list",
       fields: [
         {

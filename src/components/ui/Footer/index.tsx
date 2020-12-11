@@ -29,6 +29,8 @@ interface DataProps {
       info: {
         address?: {
           display: string
+          locality: string
+          region: string
         }
         phone?: {
           number: string
@@ -125,7 +127,7 @@ const Header: React.FC = () => {
                       </Heading>
                       <List>
                         {linksList.map(link => (
-                          <ListItem mb={2}>
+                          <ListItem key={link.label} mb={2}>
                             <Link
                               href={link.link}
                               display="flex"
@@ -133,7 +135,7 @@ const Header: React.FC = () => {
                             >
                               <ListIcon
                                 as={FaChevronRight}
-                                color="aux.100"
+                                color="aux.200"
                                 h="10px"
                               />
                               {link.label}
@@ -149,7 +151,10 @@ const Header: React.FC = () => {
                     Nosso contato
                   </Heading>
                   {info?.address?.display && (
-                    <Text mb={2}> {info.address.display}</Text>
+                    <Text mb={2}>
+                      {info.address.display}
+                      {` - ${info.address.locality} / ${info.address.region}`}
+                    </Text>
                   )}
                   {info?.phone?.number && (
                     <Text mb={2}>
@@ -166,7 +171,7 @@ const Header: React.FC = () => {
             </Container>
             <Container>
               <hr />
-              <Text color="aux.100" p={6} align="center">
+              <Text color="aux.200" p={6} align="center">
                 © {copyYears} Verbasa. All Rights Reserved.
               </Text>
             </Container>
@@ -186,6 +191,8 @@ const query = graphql`
         info {
           address {
             display
+            locality
+            region
           }
           phone {
             number

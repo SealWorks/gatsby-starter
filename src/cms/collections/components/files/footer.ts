@@ -1,12 +1,10 @@
 import { CmsCollectionFile } from "netlify-cms-core"
-import componentKeyField from "../../../schemas/fields/componentKeyField"
-import linkField from "../../../schemas/fields/linkField"
-import iconField from "../../../schemas/fields/iconField"
+import { componentKeyField, iconField, linkField } from "../../../schemas"
 
 const footerCollectionFile: CmsCollectionFile = {
   file: "content/components/footer.mdx",
   label: "Footer",
-  name: "Footer",
+  name: "footer",
   fields: [
     { ...componentKeyField, options: ["footer"], default: ["footer"] },
     {

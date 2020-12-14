@@ -5,7 +5,7 @@ import Header from "../ui/Header"
 
 const DefaultLayout: React.FC = ({ children }) => {
   return (
-    <Flex direction="column" minHeight="100vh" width="100vw">
+    <Flex direction="column" minHeight="100vh" width="100%">
       <Header />
       <Box as="section" flex="1">
         {children}

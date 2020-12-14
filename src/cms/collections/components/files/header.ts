@@ -1,8 +1,10 @@
 import { CmsCollectionFile } from "netlify-cms-core"
-import componentKeyField from "../../../schemas/fields/componentKeyField"
-import linkField from "../../../schemas/fields/linkField"
-import iconField from "../../../schemas/fields/iconField"
-import buttonGroupField from "../../../schemas/components/buttonsGroup"
+import {
+  buttonsGroup,
+  componentKeyField,
+  iconField,
+  linkField,
+} from "../../../schemas"
 
 const headerCollectionFile: CmsCollectionFile = {
   file: "content/components/header.mdx",
@@ -30,9 +32,8 @@ const headerCollectionFile: CmsCollectionFile = {
       ],
     },
     {
-      ...buttonGroupField,
+      ...buttonsGroup,
       max: 2,
-
     },
   ],
 }

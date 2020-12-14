@@ -3,6 +3,7 @@ import { CacheProvider } from "@emotion/react"
 import createCache from "@emotion/cache"
 import weakMemoize from "@emotion/weak-memoize"
 import { ChakraProvider } from "@chakra-ui/react"
+import theme from "../@chakra-ui/gatsby-plugin/theme"
 
 const memoizedCreateCacheWithContainer = weakMemoize(container => {
   let newCache = createCache({ key: "emotion-on-netlify-cms", container })
@@ -19,7 +20,7 @@ export default Component => props => {
 
   return (
     <CacheProvider value={memoizedCreateCacheWithContainer(iframeHeadElem)}>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Component {...props} />
       </ChakraProvider>
     </CacheProvider>

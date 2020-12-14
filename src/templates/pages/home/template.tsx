@@ -1,9 +1,7 @@
 import React from "react"
-import DefaultLayout from "../../components/layouts/DefaultLayout"
 import { MDXProvider } from "@mdx-js/react"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import components from "../../components/mdx"
-import { graphql } from "gatsby"
+import components from "../../../components/mdx"
+
 import {
   Box,
   Button,
@@ -12,15 +10,16 @@ import {
   Flex,
   Heading,
   HStack,
-  Stack,
   Text,
   VStack,
-  Wrap,
-  WrapItem,
 } from "@chakra-ui/react"
-import Link from "../../components/mdx/Link"
-import SVGIcon from "../../components/ui/SVGIcon"
-import Container from "../../components/layout/Container"
+import {
+  Link,
+  SVGIcon,
+  Container,
+  Card,
+  MDXBodyRender,
+} from "../../../components/"
 
 interface ButtonScheme {
   colorScheme: string
@@ -34,37 +33,6 @@ interface BlockHeroProps {
   headline: string
   buttons: ButtonScheme[]
   bgImage: string
-}
-
-interface BlockCallToActionProps {
-  title: string
-  cards: Array<{
-    title: string
-    icon: string
-  }>
-  buttons: ButtonScheme[]
-}
-
-interface BlockDescriptionProps {
-  title: string
-  cards: Array<{
-    title: string
-    icon: string
-    text: string
-    link: string
-  }>
-  body: string
-}
-
-interface TemplateProps {
-  data: {
-    hero: BlockHeroProps
-    callToAction: BlockCallToActionProps
-    description: BlockDescriptionProps
-  }
-}
-interface QueryDataToAny {
-  data?: any
 }
 
 const BlockHero: React.FC<BlockHeroProps> = ({
@@ -106,6 +74,15 @@ const BlockHero: React.FC<BlockHeroProps> = ({
       </Center>
     </Box>
   )
+}
+
+interface BlockCallToActionProps {
+  title: string
+  cards: Array<{
+    title: string
+    icon: string
+  }>
+  buttons: ButtonScheme[]
 }
 
 const BlockCallToAction: React.FC<BlockCallToActionProps> = ({
@@ -150,116 +127,69 @@ const BlockCallToAction: React.FC<BlockCallToActionProps> = ({
   )
 }
 
+interface BlockDescriptionProps {
+  title: string
+  cards: Array<{
+    title: string
+    icon: string
+    text: string
+    link: string
+  }>
+  body: string
+  isPreview?: boolean
+}
+
 const BlockDescription: React.FC<BlockDescriptionProps> = ({
   body,
   cards,
   title,
+  isPreview = false,
 }) => {
   return (
-    <Box p={20}>
+    <Box py={10}>
       <Container>
-        <Stack direction={{ base: "column", md: "row" }} w="100%">
-          <Box w={{ base: "100%", md: "50%" }}>
+        <Flex direction={{ base: "column", lg: "row" }} w="100%">
+          <Box w={{ base: "100%", lg: "50%" }} pr={{ base: 0, lg: 8 }}>
             <Heading fontSize="3xl" fontWeight="700">
               {title}
             </Heading>
-            <MDXRenderer>{body}</MDXRenderer>
+            <MDXBodyRender body={body} isPreview={isPreview} />
           </Box>
-          <Wrap w={{ base: "100%", md: "50%" }}>
-            {cards.map(card => (
-              <WrapItem
-                key={card.icon}
-                w={{ base: "100%", md: "50%" }}
-                border="3px solid #f00"
-                shadow="xl"
-              >
-                {card.text}
-              </WrapItem>
-            ))}
-          </Wrap>
-        </Stack>
+          <Box w={{ base: "100%", lg: "50%" }}>
+            <Flex wrap="wrap" justify="flex-end">
+              {cards.map(card => (
+                <Card
+                  key={card.title}
+                  {...card}
+                  p={2}
+                  w={{ base: "100%", lg: "50%" }}
+                  flex="0 0 auto"
+                />
+              ))}
+            </Flex>
+          </Box>
+        </Flex>
       </Container>
     </Box>
   )
 }
 
-export const Template: React.FC<TemplateProps> = ({ data }) => {
+interface TemplateProps {
+  data: {
+    hero: BlockHeroProps
+    callToAction: BlockCallToActionProps
+    description: BlockDescriptionProps
+  }
+}
+
+const Template: React.FC<TemplateProps> = ({ data }) => {
   return (
     <MDXProvider components={components}>
       <BlockHero {...data.hero} />
       <BlockCallToAction {...data.callToAction} />
-      {/* <BlockDescription {...data.description} /> */}
+      <BlockDescription {...data.description} />
     </MDXProvider>
   )
 }
 
-const PagesLayout: React.FC<QueryDataToAny> = ({ data }) => {
-  const { body } = data.mdx
-  const { hero, callToAction, description } = data.mdx.frontmatter
-  return (
-    <DefaultLayout>
-      <Template
-        data={{
-          hero,
-          callToAction,
-          description: {
-            body,
-            ...description,
-          },
-        }}
-      />
-    </DefaultLayout>
-  )
-}
-
-export const pageQuery = graphql`
-  query HomeTemplate($id: String) {
-    mdx(id: { eq: $id }) {
-      body
-      frontmatter {
-        slug
-        hero {
-          title
-          headline
-          buttons {
-            colorScheme
-            variant
-            label
-            link
-          }
-          bgImage
-        }
-        callToAction {
-          title
-          cards {
-            title
-            icon
-          }
-          buttons {
-            colorScheme
-            variant
-            label
-          }
-        }
-        description {
-          title
-          cards {
-            title
-            text
-            link
-            icon
-          }
-        }
-        metadata {
-          title
-          description
-          dateModified
-          datePublished
-          image
-        }
-      }
-    }
-  }
-`
-
-export default PagesLayout
+export default Template

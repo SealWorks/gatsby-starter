@@ -1,6 +1,6 @@
 import React, { ComponentType } from "react"
 import { PreviewTemplateComponentProps } from "netlify-cms-core"
-import { Template } from "../../../../templates/pages/home"
+import { Template } from "../../../../components/ui/Footer"
 
 const PreviewTemplate: ComponentType<PreviewTemplateComponentProps> = ({
   entry,
@@ -9,11 +9,7 @@ const PreviewTemplate: ComponentType<PreviewTemplateComponentProps> = ({
   const cmsData = entry.getIn(["data"]).toJS()
   const templateData = {
     ...cmsData,
-    description: {
-      ...cmsData.description,
-      body: cmsData.body,
-      isPreview: true,
-    },
+    isPreview: true,
   }
 
   if (isLoadingAsset || !templateData) {

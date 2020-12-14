@@ -28,7 +28,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     createPage({
       path: slug,
       component: templateKey
-        ? path.resolve(`./src/templates/${templateKey}.tsx`)
+        ? path.resolve(`./src/templates/${templateKey}/index.tsx`)
         : path.resolve(`./src/templates/default.tsx`),
       context: { id: node.id },
     })

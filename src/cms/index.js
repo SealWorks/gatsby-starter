@@ -74,6 +74,8 @@ if (process.env.NODE_ENV === "development") {
   }
 }
 
+CMS.registerPreviewStyle("/fonts.css")
+
 CMS.init({ config })
 
 registerPreviews()

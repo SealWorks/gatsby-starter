@@ -1,9 +1,8 @@
 import { CmsField } from "netlify-cms-core"
-import descriptionField from "../fields/descriptionField"
 import iconField from "../fields/iconField"
 import linkField from "../fields/linkField"
 
-const cardsObject: CmsField = {
+const cardsGroup: CmsField = {
   label: "Cards",
   name: "cards",
   widget: "list",
@@ -15,4 +14,4 @@ const cardsObject: CmsField = {
   ],
 }
 
-export default cardsObject
+export default cardsGroup

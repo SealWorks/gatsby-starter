@@ -1,8 +1,11 @@
 import { CmsCollection, CmsField } from "netlify-cms-core"
-import metadataField from "../../schemas/components/metadataObject"
-import slugField from "../../schemas/fields/slugField"
-import templateKeyField from "../../schemas/fields/templateKeyField"
-import pageTitleField from "../../schemas/fields/pageTitleField"
+import {
+  bodyField,
+  metadataObject,
+  pageTitleField,
+  slugField,
+  templateKeyField,
+} from "../../schemas"
 
 const fields: CmsField[] = [
   {
@@ -12,7 +15,8 @@ const fields: CmsField[] = [
   },
   slugField,
   pageTitleField,
-  metadataField,
+  bodyField,
+  metadataObject,
 ]
 
 const collection: CmsCollection = {

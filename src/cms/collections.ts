@@ -1,6 +1,6 @@
 import CMS from "netlify-cms-app"
 
-import { pagesCollection, pagesPreviewTemplate } from "./collections/pages"
+import { pagesCollection, pagesPreview } from "./collections/pages"
 import { blogPostsCollection, blogPostsTemplate } from "./collections/blogPosts"
 import {
   blogCategoriesCollection,
@@ -13,7 +13,10 @@ import {
 } from "./collections/settings"
 import { authorsCollection } from "./collections/authors"
 import withChakra from "./withChakra"
-import { componentsCollection } from "./collections/components"
+import {
+  componentsCollection,
+  componentsPreview,
+} from "./collections/components"
 import { faviconCollection } from "./collections/favicon"
 
 export const collections = [
@@ -29,7 +32,13 @@ export const collections = [
 
 export function registerPreviews() {
   // CMS.registerPreviewTemplate(pagesCollection.name, withChakra(pagesTemplate))
-  CMS.registerPreviewTemplate("home", withChakra(pagesPreviewTemplate.home))
+  CMS.registerPreviewTemplate("home", withChakra(pagesPreview.home))
+  CMS.registerPreviewTemplate("header", withChakra(componentsPreview.header))
+  CMS.registerPreviewTemplate(
+    "newsletter",
+    withChakra(componentsPreview.newsletter)
+  )
+  CMS.registerPreviewTemplate("footer", withChakra(componentsPreview.footer))
   CMS.registerPreviewTemplate(blogPostsCollection.name, blogPostsTemplate)
   CMS.registerPreviewTemplate(
     blogCategoriesCollection.name,

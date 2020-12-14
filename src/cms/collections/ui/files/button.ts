@@ -1,6 +1,5 @@
 import { CmsCollectionFile } from "netlify-cms-core"
-import colorRelationField from "../../../schemas/fields/colorRelationField"
-import iconField from "../../../schemas/fields/iconField"
+import { colorRelationField, iconField } from "../../../schemas"
 
 const buttonCollectionFile: CmsCollectionFile = {
   file: "content/ui/button.mdx",

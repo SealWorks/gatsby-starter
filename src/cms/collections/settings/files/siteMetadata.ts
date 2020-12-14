@@ -1,7 +1,5 @@
 import { CmsCollectionFile } from "netlify-cms-core"
-import descriptionField from "../../../schemas/fields/descriptionField"
-import metadataField from "../../../schemas/components/metadataObject"
-import urlField from "../../../schemas/fields/urlField"
+import { descriptionField, urlField } from "../../../schemas"
 
 const siteMetadataCollectionFile: CmsCollectionFile = {
   file: "content/settings/siteMetadata.json",

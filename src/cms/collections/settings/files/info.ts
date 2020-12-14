@@ -1,5 +1,5 @@
 import { CmsCollectionFile } from "netlify-cms-core"
-import urlField from "../../../schemas/fields/urlField"
+import { urlField } from "../../../schemas"
 
 const infoCollectionFile: CmsCollectionFile = {
   file: "content/settings/info.json",

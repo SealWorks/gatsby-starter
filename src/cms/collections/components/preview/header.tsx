@@ -1,20 +1,12 @@
 import React, { ComponentType } from "react"
 import { PreviewTemplateComponentProps } from "netlify-cms-core"
-import { Template } from "../../../../templates/pages/home"
+import { Template } from "../../../../components/ui/Header"
 
 const PreviewTemplate: ComponentType<PreviewTemplateComponentProps> = ({
   entry,
   isLoadingAsset,
 }) => {
-  const cmsData = entry.getIn(["data"]).toJS()
-  const templateData = {
-    ...cmsData,
-    description: {
-      ...cmsData.description,
-      body: cmsData.body,
-      isPreview: true,
-    },
-  }
+  const templateData = entry.getIn(["data"]).toJS()
 
   if (isLoadingAsset || !templateData) {
     return <div>Loading ...</div>

@@ -1,4 +1,4 @@
 import pagesCollection from "./collection"
-import * as pagesPreviewTemplate from "./preview"
+import * as pagesPreview from "./preview"
 
-export { pagesCollection, pagesPreviewTemplate }
+export { pagesCollection, pagesPreview }

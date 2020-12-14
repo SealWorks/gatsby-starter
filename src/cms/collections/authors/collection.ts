@@ -1,23 +1,22 @@
 import { CmsCollection, CmsField } from "netlify-cms-core"
-import metadataField from "../../schemas/components/metadataObject"
-import slugField from "../../schemas/fields/slugField"
-import templateKeyField from "../../schemas/fields/templateKeyField"
-import pageTitleField from "../../schemas/fields/pageTitleField"
+import {
+  metadataObject,
+  pageTitleField,
+  slugField,
+  templateKeyField,
+} from "../../schemas"
 
 const fields: CmsField[] = [
   {
     ...templateKeyField,
     widget: "select",
-    options: [
-      { label: "Default", value: "pages/default" },
-      { label: "Home Page", value: "pages/home" },
-    ],
-    default: ["pages/default"],
+    options: [{ label: "Authors", value: "authors" }],
+    default: ["authors"],
   },
   slugField,
   pageTitleField,
   { label: "Body", name: "body", widget: "markdown" },
-  metadataField,
+  metadataObject,
 ]
 
 const collection: CmsCollection = {

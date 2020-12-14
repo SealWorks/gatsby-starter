@@ -8,7 +8,6 @@ export const iconsNames = reqSvgs
   .map(key => key.slice(2, key.length - 3))
 
 const SVGIcon = ({ name, ...rest }) => {
-  console.log(iconsNames)
   const svgData = reqSvgs(`./${name}.js`)
   if (svgData.default) {
     const ThisIcon = createIcon({ displayName: name, ...svgData.default })

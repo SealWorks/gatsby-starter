@@ -33,32 +33,35 @@ const schema = Yup.object().shape({
 
 export default function App() {
   const formRef = useRef()
-  const handleSubmit = useCallback(async (data, { resetForm }) => {
-    try {
-      formRef.current.setErrors({})
-      // console.log(urlEncode(data));
-      await schema.validate(data, { abortEarly: false })
+  const handleSubmit = useCallback(
+    async (data, { reset }) => {
+      try {
+        formRef.current.setErrors({})
+        const encodedData = new URLSearchParams(data).toString()
+        await schema.validate(data, { abortEarly: false })
 
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: urlEncode(data),
-      })
-        .then(() => {
-          navigate("/newsletter/obrigado")
-          resetForm()
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encodedData,
         })
-        .catch(error => {
-          console.log(error)
-        })
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err)
-        formRef.current.setErrors(errors)
-        return
+          .then(() => {
+            navigate("/newsletter/obrigado")
+            reset()
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err)
+          formRef.current.setErrors(errors)
+          return
+        }
       }
-    }
-  }, [])
+    },
+    [formRef]
+  )
   return (
     <Form
       schema={schema}

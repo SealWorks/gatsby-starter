@@ -24,13 +24,14 @@ const schema = Yup.object().shape({
     .email("Favor digitar um email válido"),
 })
 
-function FormComponent() {
+const FormComponent = () => {
   const formRef = useRef()
   const handleSubmit = useCallback(
     async (data, { reset }) => {
       try {
         formRef.current.setErrors({})
         const encodedData = urlEncode(data)
+        console.log(encodedData)
         await schema.validate(data, { abortEarly: false })
 
         fetch("/", {
@@ -67,9 +68,9 @@ function FormComponent() {
     >
       <Flex direction="column" maxW="350px" color="black">
         <MetaInput name="form-name" value="newsletter" type="hidden" hidden />
-        <MetaInput name="bot-field" hidden />
         <MetaInput name="name" placeholder="Seu Nome" />
         <MetaInput name="email" placeholder="Email" hasSubmitButton />
+        <MetaInput name="bot-field" hidden />
       </Flex>
     </Form>
   )

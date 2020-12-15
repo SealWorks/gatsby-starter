@@ -13,6 +13,7 @@ import { FaTelegramPlane } from "react-icons/fa"
 import * as Yup from "yup"
 import getValidationErrors from "../../../utils/getValidationErrors"
 import MetaInput from "../MetaInput"
+import urlEncode from "../../../utils/urlEncode"
 
 const schema = Yup.object().shape({
   "bot-field": Yup.string(),
@@ -29,7 +30,7 @@ function FormComponent() {
     async (data, { reset }) => {
       try {
         formRef.current.setErrors({})
-        const encodedData = new URLSearchParams(data).toString()
+        const encodedData = urlEncode(data)
         await schema.validate(data, { abortEarly: false })
 
         fetch("/", {
@@ -67,13 +68,8 @@ function FormComponent() {
       <Flex direction="column" maxW="350px" color="black">
         <MetaInput name="form-name" value="newsletter" type="hidden" hidden />
         <MetaInput name="bot-field" hidden />
-        <MetaInput type="text" placeholder="Seu Nome" name="name" />
-        <MetaInput
-          type="text"
-          placeholder="Email"
-          name="email"
-          hasSubmitButton
-        />
+        <MetaInput name="name" placeholder="Seu Nome" />
+        <MetaInput name="email" placeholder="Email" hasSubmitButton />
       </Flex>
     </Form>
   )

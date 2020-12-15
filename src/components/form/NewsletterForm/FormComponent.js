@@ -30,7 +30,7 @@ const FormComponent = () => {
     async (data, { reset }) => {
       try {
         formRef.current.setErrors({})
-        const encodedData = urlEncode(data)
+        const encodedData = new URLSearchParams(data).toString()
         console.log(encodedData)
         await schema.validate(data, { abortEarly: false })
 

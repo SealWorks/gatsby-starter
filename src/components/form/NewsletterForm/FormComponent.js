@@ -12,15 +12,7 @@ import { navigate } from "gatsby"
 import { FaTelegramPlane } from "react-icons/fa"
 import * as Yup from "yup"
 import getValidationErrors from "../../../utils/getValidationErrors"
-import urlEncode from "../../../utils/urlEncode"
 import MetaInput from "../MetaInput"
-
-interface NewsletterFormData {
-  "bot-field"?: string
-  "form-name"?: string
-  name: string
-  email: string
-}
 
 const schema = Yup.object().shape({
   "bot-field": Yup.string(),
@@ -31,7 +23,7 @@ const schema = Yup.object().shape({
     .email("Favor digitar um email válido"),
 })
 
-export default function App() {
+function FormComponent() {
   const formRef = useRef()
   const handleSubmit = useCallback(
     async (data, { reset }) => {
@@ -86,3 +78,5 @@ export default function App() {
     </Form>
   )
 }
+
+export default FormComponent

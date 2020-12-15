@@ -75,6 +75,8 @@ const MetaInput: React.FC<MetaInputProps> = ({
         </Tooltip>
       )}
       <Input
+        name={name}
+        
         onFocus={handleInputFocused}
         onBlur={handleInputBlur}
         defaultValue={defaultValue}

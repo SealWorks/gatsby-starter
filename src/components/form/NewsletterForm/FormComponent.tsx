@@ -46,7 +46,6 @@ export default function App() {
       })
         .then(() => {
           navigate("/newsletter/obrigado")
-          // alert('Mensagem enviada, Obrigado por se registrar');
           resetForm()
         })
         .catch(error => {

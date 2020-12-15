@@ -30,8 +30,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `cmsComponents`,
-        path: path.join(__dirname, `content`, `components`),
+        name: `pages`,
+        path: path.join(__dirname, `src`, `pages`),
       },
     },
 

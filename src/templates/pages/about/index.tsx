@@ -2,6 +2,7 @@ import React from "react"
 import Template from "./template"
 import { DefaultLayout, NewsletterForm } from "../../../components"
 import { graphql } from "gatsby"
+import { Box } from "@chakra-ui/react"
 
 interface QueryDataToAny {
   data: any
@@ -9,19 +10,15 @@ interface QueryDataToAny {
 
 const PagesLayout: React.FC<QueryDataToAny> = ({ data }) => {
   const { body } = data.mdx
-  const { hero, callToAction, description } = data.mdx.frontmatter
   return (
     <DefaultLayout>
       <Template
         data={{
-          hero,
-          callToAction,
-          description: {
-            body,
-            ...description,
-          },
+          ...data.mdx.frontmatter,
+          body,
         }}
       />
+      <Box pb={10} />
       <NewsletterForm />
     </DefaultLayout>
   )
@@ -32,36 +29,25 @@ const pageQuery = graphql`
     mdx(id: { eq: $id }) {
       body
       frontmatter {
+        title
         slug
-        hero {
+        cards {
           title
-          headline
-          buttons {
-            colorScheme
-            variant
-            label
-            link
-          }
+          text
+          link
+          icon
+        }
+        mission {
           bgImage
+          text
         }
-        callToAction {
-          title
+        vision {
+          bgImage
+          text
+        }
+        values {
           cards {
             title
-            icon
-          }
-          buttons {
-            colorScheme
-            variant
-            label
-          }
-        }
-        description {
-          title
-          cards {
-            title
-            text
-            link
             icon
           }
         }

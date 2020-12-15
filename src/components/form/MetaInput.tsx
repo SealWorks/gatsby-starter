@@ -13,11 +13,7 @@ import {
   InputGroup,
   InputRightElement,
   InputLeftAddon,
-  Popover,
-  PopoverContent,
-  PopoverArrow,
-  PopoverTrigger,
-  PopoverHeader,
+  Tooltip,
 } from "@chakra-ui/react"
 import { useField } from "@unform/core"
 import { FaTelegramPlane } from "react-icons/fa"
@@ -72,17 +68,11 @@ const MetaInput: React.FC<MetaInputProps> = ({
       }
     >
       {error && (
-        <Popover trigger="hover" placement="top-start">
-          <PopoverTrigger>
-            <InputLeftAddon title={error} p={2} bg="red.200">
-              <Icon as={FiAlertCircle} color="#red.500" />
-            </InputLeftAddon>
-          </PopoverTrigger>
-          <PopoverContent>
-            <PopoverArrow />
-            <PopoverHeader>{error}</PopoverHeader>
-          </PopoverContent>
-        </Popover>
+        <Tooltip hasArrow label={error} bg="red.600" placement="top-start">
+          <InputLeftAddon title={error} p={2} bg="red.100">
+            <Icon as={FiAlertCircle} color="#red.500" />
+          </InputLeftAddon>
+        </Tooltip>
       )}
       <Input
         onFocus={handleInputFocused}

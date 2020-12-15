@@ -33,6 +33,7 @@ export const collections = [
 export function registerPreviews() {
   // CMS.registerPreviewTemplate(pagesCollection.name, withChakra(pagesTemplate))
   CMS.registerPreviewTemplate("home", withChakra(pagesPreview.home))
+  CMS.registerPreviewTemplate("about", withChakra(pagesPreview.about))
   CMS.registerPreviewTemplate("header", withChakra(componentsPreview.header))
   CMS.registerPreviewTemplate(
     "newsletter",

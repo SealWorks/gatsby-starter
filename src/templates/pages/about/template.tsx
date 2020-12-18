@@ -35,9 +35,9 @@ interface BlockDescriptionProps {
 }
 
 const BlockDescription: React.FC<BlockDescriptionProps> = ({
-  body,
   cards,
   title,
+  body,
   isPreview = false,
 }) => {
   return (

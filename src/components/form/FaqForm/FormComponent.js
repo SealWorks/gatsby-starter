@@ -1,6 +1,7 @@
 import {
   Flex,
   IconButton,
+  Button,
   Input,
   InputGroup,
   InputRightAddon,
@@ -12,15 +13,17 @@ import { navigate } from "gatsby"
 import { FaTelegramPlane } from "react-icons/fa"
 import * as Yup from "yup"
 import getValidationErrors from "../../../utils/getValidationErrors"
-import MetaInput from "../MetaInput"
+import { MetaInput, MetaTextarea } from "../.."
 
 const schema = Yup.object().shape({
   "bot-field": Yup.string(),
   "form-name": Yup.string(),
   name: Yup.string().required("Nome é obrigatório"),
+  phone: Yup.string(),
   email: Yup.string()
     .required("Email é obrigatório")
     .email("Favor digitar um email válido"),
+  message: Yup.string().required("A mensagem é obrigatória"),
 })
 
 const FormComponent = () => {
@@ -57,7 +60,7 @@ const FormComponent = () => {
   return (
     <Form
       schema={schema}
-      name="newsletter"
+      name="faq"
       method="post"
       ref={formRef}
       onSubmit={handleSubmit}
@@ -65,14 +68,15 @@ const FormComponent = () => {
       data-netlify-honeypot="bot-field"
     >
       <Flex direction="column" maxW="350px" color="black">
-        <MetaInput name="form-name" value="newsletter" type="hidden" hidden />
+        <MetaInput name="form-name" value="faq" type="hidden" hidden />
         <MetaInput name="bot-field" hidden />
-        <MetaInput name="name" placeholder="Digite seu nome completo" />
-        <MetaInput
-          name="email"
-          placeholder="Digite seu melhor email"
-          hasSubmitButton
-        />
+        <MetaInput name="name" placeholder="Seu Nome" />
+        <MetaInput name="phone" placeholder="(99) 99999.9999" />
+        <MetaInput name="email" placeholder="Email" />
+        <MetaTextarea name="message" placeholder="Qual a sua dúvida ?" />
+        <Button variant="outline" type="submit">
+          Enviar
+        </Button>
       </Flex>
     </Form>
   )

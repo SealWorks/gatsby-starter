@@ -5,7 +5,7 @@ import { repository } from "../../package.json"
 import cloudinary from "netlify-cms-media-library-cloudinary"
 import uploadcare from "netlify-cms-media-library-uploadcare"
 import publicKeys from "../../content/settings/publicKeys.json"
-import { registerEvents } from "./betafeatures"
+import { registerEvents } from "./betaFeatures"
 
 let config = {
   backend: {
@@ -74,7 +74,7 @@ if (process.env.NODE_ENV === "development") {
   }
 }
 
-CMS.registerPreviewStyle("/fonts.css")
+CMS.registerPreviewStyle("/font.css")
 
 CMS.init({ config })
 

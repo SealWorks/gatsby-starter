@@ -7,7 +7,6 @@ const metadataObject: CmsField = {
   widget: "object",
   collapsed: true,
   fields: [
-    { name: "templateKey", widget: "hidden", default: "home" },
     {
       label: "Title",
       name: "title",

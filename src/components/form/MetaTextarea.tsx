@@ -9,22 +9,23 @@ import {
   chakra,
   IconButton,
   Icon,
-  Input,
   InputGroup,
   InputRightElement,
   Tooltip,
+  Textarea,
   InputLeftElement,
+  Box,
 } from "@chakra-ui/react"
 import { useField } from "@unform/core"
 import { FaTelegramPlane } from "react-icons/fa"
 import { FiAlertCircle } from "react-icons/fi"
 
-interface MetaInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface MetaTextareaProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   hasSubmitButton?: boolean
 }
 
-const MetaInput: React.FC<MetaInputProps> = ({
+const MetaTextarea: React.FC<MetaTextareaProps> = ({
   name,
   hasSubmitButton,
   ...rest
@@ -67,21 +68,21 @@ const MetaInput: React.FC<MetaInputProps> = ({
           : "white"
       }
     >
-      {!!error && (
+      {error && (
         <Tooltip hasArrow label={error} bg="red.600" placement="top-start">
           <InputLeftElement title={error} p={2} roundedLeft="md">
             <Icon as={FiAlertCircle} color="red.500" />
           </InputLeftElement>
         </Tooltip>
       )}
-      <Input
+      <Textarea
         name={name}
         onFocus={handleInputFocused}
         onBlur={handleInputBlur}
         defaultValue={defaultValue}
         ref={inputRef}
-        pl={`${!!error ? 12 : 4}`}
         {...rest}
+        pl={`${error ? 12 : 4}`}
       />
 
       {hasSubmitButton && (
@@ -100,4 +101,4 @@ const MetaInput: React.FC<MetaInputProps> = ({
   )
 }
 
-export default chakra(MetaInput)
+export default chakra(MetaTextarea)

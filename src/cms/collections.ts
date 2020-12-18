@@ -6,6 +6,11 @@ import {
   blogCategoriesCollection,
   blogCategoriesTemplate,
 } from "./collections/blogCategories"
+import { faqPostCollection, faqPostTemplate } from "./collections/faqPost"
+import {
+  faqCategoriesCollection,
+  faqCategoriesTemplate,
+} from "./collections/faqCategories"
 import { uiCollection } from "./collections/ui"
 import {
   settingsCollection,
@@ -23,6 +28,8 @@ export const collections = [
   pagesCollection,
   blogPostsCollection,
   blogCategoriesCollection,
+  faqPostCollection,
+  faqCategoriesCollection,
   authorsCollection,
   componentsCollection,
   uiCollection,
@@ -34,6 +41,10 @@ export function registerPreviews() {
   // CMS.registerPreviewTemplate(pagesCollection.name, withChakra(pagesTemplate))
   CMS.registerPreviewTemplate("home", withChakra(pagesPreview.home))
   CMS.registerPreviewTemplate("about", withChakra(pagesPreview.about))
+  CMS.registerPreviewTemplate(
+    "entre-para-o-time",
+    withChakra(pagesPreview.entreParaOTime)
+  )
   CMS.registerPreviewTemplate("header", withChakra(componentsPreview.header))
   CMS.registerPreviewTemplate(
     "newsletter",
@@ -44,6 +55,18 @@ export function registerPreviews() {
   CMS.registerPreviewTemplate(
     blogCategoriesCollection.name,
     blogCategoriesTemplate
+  )
+  CMS.registerPreviewTemplate(
+    faqPostCollection.name,
+    withChakra(faqPostTemplate)
+  )
+  CMS.registerPreviewTemplate(
+    faqCategoriesCollection.name,
+    withChakra(faqCategoriesTemplate)
+  )
+  CMS.registerPreviewTemplate(
+    faqCategoriesCollection.name,
+    withChakra(faqCategoriesTemplate)
   )
   CMS.registerPreviewTemplate(
     "manifest",

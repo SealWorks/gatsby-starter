@@ -1,10 +1,7 @@
 import { CmsCollectionFile } from "netlify-cms-core"
 import {
   bodyField,
-  buttonFields,
-  buttonsGroup,
   cardsGroup,
-  linkField,
   metadataObject,
   pageTitleField,
   slugField,

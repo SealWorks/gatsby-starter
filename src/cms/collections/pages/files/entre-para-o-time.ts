@@ -1,12 +1,12 @@
-import { CmsCollectionFile, CmsField } from "netlify-cms-core"
+import { CmsCollectionFile } from "netlify-cms-core"
 import {
   buttonsGroup,
   metadataObject,
   pageTitleField,
   slugField,
   templateKeyField,
+  youtubeField,
 } from "../../../schemas"
-import youtubeField from "../../../schemas/fields/youtubeField"
 
 const entreParaOTimePageCollection: CmsCollectionFile = {
   file: "content/pages/entre-para-o-time.mdx",

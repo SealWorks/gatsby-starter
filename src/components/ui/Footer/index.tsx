@@ -9,7 +9,6 @@ import {
   Divider,
   Stack,
   ListItem,
-  LinkProps,
 } from "@chakra-ui/react"
 import { graphql, StaticQuery } from "gatsby"
 import React, { useMemo } from "react"
@@ -18,36 +17,6 @@ import Link from "../../mdx/Link"
 import SVGIcon from "../SVGIcon"
 import { FaChevronRight } from "react-icons/fa"
 import { MDXBodyRender } from "../.."
-
-const MenuItem: React.FC<LinkProps> = ({ children, href }) => {
-  return (
-    <ListItem
-      position="relative"
-      p={3}
-      pb={1}
-      _after={{
-        content: `" "`,
-        position: "absolute",
-        borderBottom: "2px",
-        borderColor: "brand.500",
-        bottom: 0,
-        left: "50%",
-        w: "0%",
-        h: 0,
-        transform: "translateX(-50%)",
-        transition: "all",
-        transitionDuration: "220ms",
-      }}
-      _hover={{
-        _after: {
-          w: "50%",
-        },
-      }}
-    >
-      <Link href={href}>{children}</Link>
-    </ListItem>
-  )
-}
 
 interface TemplateProps {
   data: {
@@ -67,7 +36,7 @@ interface TemplateProps {
 }
 
 export const Template: React.FC<TemplateProps> = ({
-  data: { logo, linksLists, info, body, isPreview = false, BodyPreview },
+  data: { logo, linksLists, info, body, isPreview = false },
 }) => {
   const copyYears = useMemo(() => {
     const registerYear = 2020

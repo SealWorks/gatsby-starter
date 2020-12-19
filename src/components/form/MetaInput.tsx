@@ -53,7 +53,7 @@ const MetaInput: React.FC<MetaInputProps> = ({
 
   return (
     <InputGroup
-      mb={rest.type === "hiden" || rest.hidden ? 0 : 4}
+      mb={rest.type === "hidden" || rest.hidden ? 0 : 4}
       bg="white"
       rounded="md"
       border={rest.hidden ? 0 : "2px solid"}

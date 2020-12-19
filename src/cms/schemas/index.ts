@@ -13,6 +13,7 @@ import pageTitleField from "./fields/pageTitleField"
 import slugField from "./fields/slugField"
 import templateKeyField from "./fields/templateKeyField"
 import urlField from "./fields/urlField"
+import youtubeField from "./fields/youtubeField"
 
 export {
   bodyField,
@@ -27,6 +28,7 @@ export {
   slugField,
   templateKeyField,
   urlField,
+  youtubeField,
   buttonsGroup,
   cardsGroup,
   metadataObject,

@@ -1,7 +1,7 @@
 import React from "react"
 import PostTemplate from "./PostTemplate"
-import { Container, DefaultLayout, FaqForm, Link } from "../../components"
-import { graphql, navigate } from "gatsby"
+import { Container, DefaultLayout, Link, SVGIcon } from "../../components"
+import { graphql } from "gatsby"
 import {
   Box,
   Breadcrumb,
@@ -9,11 +9,29 @@ import {
   BreadcrumbLink,
   Button,
   Flex,
-  Icon,
+  Heading,
 } from "@chakra-ui/react"
 import { FaChevronRight } from "react-icons/fa"
-import FaqCategoryCards from "./FaqCategryCards"
-import { FiArrowLeft } from "react-icons/fi"
+
+const MarketBox: React.FC = () => (
+  <Container>
+    <Box rounded="xl" bg="white" p={{ base: 4, md: 8, lg: 12 }}>
+      <SVGIcon name="logo-verbasa" h={8} w="auto" mb={4} />
+      <Heading as="p" fontSize="2xl" mb={4}>
+        De profissionais para profissionais. A maior e mais desejada mesa
+        proprietária do Brasil.
+      </Heading>
+      <Flex>
+        <Button as={Link} href="#" variant="outline" colorScheme="brand" mr={8}>
+          Saiba mais
+        </Button>
+        <Button as={Link} href="#" variant="solid" colorScheme="brand">
+          Entre para o time
+        </Button>
+      </Flex>
+    </Box>
+  </Container>
+)
 
 interface pageContextProps {
   categories: {
@@ -33,16 +51,15 @@ interface pageContextProps {
   }
 }
 
-interface QueryDataToAny {
+interface PageProps {
   data: any
   pageContext: pageContextProps
 }
 
-const PagesLayout: React.FC<QueryDataToAny> = ({ data, pageContext }) => {
+const PagesLayout: React.FC<PageProps> = ({ data, pageContext }) => {
   const categoryFound = pageContext.categories.data.allMdx.edges.find(
-    edge => edge.node.frontmatter.slug === data.mdx.frontmatter.categories[0]
+    item => item.node.frontmatter.slug === data.mdx.frontmatter.category
   )
-
   const category = { ...categoryFound?.node.frontmatter }
 
   const templateData = {
@@ -54,48 +71,38 @@ const PagesLayout: React.FC<QueryDataToAny> = ({ data, pageContext }) => {
   }
   return (
     <DefaultLayout>
-      <Container>
-        <Flex
-          w={{ base: "100%", lg: "61.8%" }}
-          mx="auto"
-          direction="column"
-          py={10}
-        >
+      <Box
+        bgColor="gray.200"
+        bgImg={`url(${templateData.post.bgImage})`}
+        bgSize="100% 500px"
+        bgPos="center top"
+        bgRepeat="no-repeat"
+      >
+        <Container>
           <Breadcrumb
             spacing="8px"
             separator={<FaChevronRight color="gray.500" size={10} />}
-            pb={10}
+            pt={20}
+            mb={-8}
+            color="white"
           >
             <BreadcrumbItem>
-              <BreadcrumbLink as={Link} href="/faq">
-                Dúvidas
+              <BreadcrumbLink as={Link} href="/blog">
+                Blog
               </BreadcrumbLink>
             </BreadcrumbItem>
 
-            <BreadcrumbItem color="brand.500">
-              <BreadcrumbLink as={Link} href={`/faq/category${category.slug}`}>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} href={`/blog/category${category.slug}`}>
                 {category.title}
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
-          <PostTemplate data={templateData} />
-          <Button
-            display="flex"
-            colorScheme="brand"
-            variant="outline"
-            w={32}
-            mt={8}
-            onClick={() => navigate(-1)}
-          >
-            <Icon as={FiArrowLeft} mr={4} />
-            Voltar
-          </Button>
-        </Flex>
-      </Container>
-      <Box bg="aux.50">
-        <FaqCategoryCards />
+        </Container>
+
+        <PostTemplate data={{ ...templateData }} />
+        <MarketBox />
       </Box>
-      <FaqForm />
     </DefaultLayout>
   )
 }
@@ -107,7 +114,11 @@ const pageQuery = graphql`
       frontmatter {
         title
         slug
-        categories
+        category
+        author
+        caption
+        bgImage
+        image
         metadata {
           title
           description
@@ -116,6 +127,10 @@ const pageQuery = graphql`
           relativeDateModified: dateModified(fromNow: true, locale: "pt")
           originalDatePublished: datePublished(
             formatString: "dddd, DD [de] MMMM, YYYY"
+            locale: "pt"
+          )
+          lastUpdate: dateModified(
+            formatString: "DD [de] MMMM, YYYY"
             locale: "pt"
           )
           image

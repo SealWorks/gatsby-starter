@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Divider, Flex, Heading, Image } from "@chakra-ui/react"
+import { Box, Divider, Flex, Heading } from "@chakra-ui/react"
 import { Container, MDXBodyRender } from "../.."
 import { graphql, StaticQuery } from "gatsby"
 import FormComponent from "./FormComponent"

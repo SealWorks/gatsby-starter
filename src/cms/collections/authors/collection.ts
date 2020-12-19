@@ -1,10 +1,5 @@
 import { CmsCollection, CmsField } from "netlify-cms-core"
-import {
-  metadataObject,
-  pageTitleField,
-  slugField,
-  templateKeyField,
-} from "../../schemas"
+import { metadataObject, slugField, templateKeyField } from "../../schemas"
 
 const fields: CmsField[] = [
   {
@@ -14,7 +9,9 @@ const fields: CmsField[] = [
     default: ["authors"],
   },
   slugField,
-  pageTitleField,
+  { label: "Name", name: "name" },
+  { label: "Headline", name: "headline" },
+  { label: "Thumbnail", name: "thumbnail", widget: "image" },
   { label: "Body", name: "body", widget: "markdown" },
   metadataObject,
 ]
@@ -25,9 +22,11 @@ const collection: CmsCollection = {
   name: "authors",
   folder: "content/authors",
   create: true,
+  delete: true,
   slug: "{{slug}}",
   extension: "mdx",
   format: "frontmatter",
+  summary: "{{name}}",
   media_folder: "../../static/img/authors",
   public_folder: "/img/authors",
   fields,

@@ -24,7 +24,9 @@ export const Template: React.FC<TemplateProps> = ({
             <Heading fontSize="2xl">{title}</Heading>
             <Divider borderBottom="2px solid white" w={20} my={4} />
             <MDXBodyRender body={body} isPreview={isPreview} />
-            <FormComponent />
+            <Box mt={6}>
+              <FormComponent />
+            </Box>
           </Box>
           <Box w="50%" display={{ base: "none", md: "block" }}>
             <Image

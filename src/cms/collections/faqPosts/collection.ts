@@ -35,6 +35,7 @@ const collection: CmsCollection = {
   name: "faqPost",
   folder: "content/faq/post",
   create: true,
+  delete: true,
   extension: "mdx",
   format: "frontmatter",
   media_folder: "../../../static/img/faq",

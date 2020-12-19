@@ -14,6 +14,12 @@ const fields: CmsField[] = [
   },
   slugField,
   pageTitleField,
+  {
+    label: "Background Image",
+    name: "bgImage",
+    widget: "image",
+    required: false,
+  },
   metadataObject,
 ]
 
@@ -22,10 +28,14 @@ const collection: CmsCollection = {
   label_singular: "Blog Category",
   name: "blogCategory",
   folder: "content/blog/category",
+  create: true,
+  delete: true,
   extension: "mdx",
   format: "frontmatter",
   media_folder: "../../../static/img/blog",
   public_folder: "/img/blog",
+  summary: "{{title}}",
+  sortable_fields: ["title", "metadata.dateModified"],
   fields,
 }
 

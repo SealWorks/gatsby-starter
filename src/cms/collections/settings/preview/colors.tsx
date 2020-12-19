@@ -1,17 +1,6 @@
 import React, { ComponentType } from "react"
 import { PreviewTemplateComponentProps } from "netlify-cms-core"
-import {
-  Box,
-  Center,
-  chakra,
-  Container,
-  HStack,
-  Img,
-  Stack,
-  Text,
-  Wrap,
-  WrapItem,
-} from "@chakra-ui/react"
+import { Box, chakra, HStack, Text } from "@chakra-ui/react"
 import tc from "tinycolor2"
 
 interface colorSetProps {

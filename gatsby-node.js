@@ -131,4 +131,69 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       context: { id: node.id },
     })
   })
+
+  const cmsBlogCategories = await graphql(`
+    {
+      allMdx(
+        filter: { frontmatter: { templateKey: { glob: "blog/category" } } }
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              templateKey
+              title
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (cmsBlogCategories.errors) {
+    reporter.panicOnBuild(
+      '🚨  ERROR: Loading "createPages" query for cmsBlogCategories'
+    )
+  }
+
+  cmsBlogCategories.data.allMdx.edges.forEach(({ node }) => {
+    const { templateKey, slug } = node.frontmatter
+    createPage({
+      path: `/blog/category${slug}`,
+      component: path.resolve(`./src/templates/${templateKey}.tsx`),
+      context: { category: slug, id: node.id },
+    })
+  })
+
+  const cmsBlogPosts = await graphql(`
+    {
+      allMdx(filter: { frontmatter: { templateKey: { glob: "blog/post" } } }) {
+        edges {
+          node {
+            id
+            frontmatter {
+              templateKey
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (cmsBlogPosts.errors) {
+    reporter.panicOnBuild(
+      '🚨  ERROR: Loading "createPages" query for cmsBlogPosts'
+    )
+  }
+
+  cmsBlogPosts.data.allMdx.edges.forEach(({ node }) => {
+    const { templateKey, slug } = node.frontmatter
+    createPage({
+      path: `/blog${slug}`,
+      component: path.resolve(`./src/templates/${templateKey}.tsx`),
+      context: { categories: cmsBlogCategories, id: node.id },
+    })
+  })
 }

@@ -6,7 +6,7 @@ import {
   blogCategoriesCollection,
   blogCategoriesTemplate,
 } from "./collections/blogCategories"
-import { faqPostCollection, faqPostTemplate } from "./collections/faqPost"
+import { faqPostsCollection, faqPostsTemplate } from "./collections/faqPosts"
 import {
   faqCategoriesCollection,
   faqCategoriesTemplate,
@@ -28,7 +28,7 @@ export const collections = [
   pagesCollection,
   blogPostsCollection,
   blogCategoriesCollection,
-  faqPostCollection,
+  faqPostsCollection,
   faqCategoriesCollection,
   authorsCollection,
   componentsCollection,
@@ -45,6 +45,10 @@ export function registerPreviews() {
     "entre-para-o-time",
     withChakra(pagesPreview.entreParaOTime)
   )
+  CMS.registerPreviewTemplate(
+    "plano-de-carreira",
+    withChakra(pagesPreview.planoDeCarreira)
+  )
   CMS.registerPreviewTemplate("header", withChakra(componentsPreview.header))
   CMS.registerPreviewTemplate(
     "newsletter",
@@ -57,8 +61,8 @@ export function registerPreviews() {
     blogCategoriesTemplate
   )
   CMS.registerPreviewTemplate(
-    faqPostCollection.name,
-    withChakra(faqPostTemplate)
+    faqPostsCollection.name,
+    withChakra(faqPostsTemplate)
   )
   CMS.registerPreviewTemplate(
     faqCategoriesCollection.name,

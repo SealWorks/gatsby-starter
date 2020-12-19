@@ -5,7 +5,7 @@ import { repository } from "../../package.json"
 import cloudinary from "netlify-cms-media-library-cloudinary"
 import uploadcare from "netlify-cms-media-library-uploadcare"
 import publicKeys from "../../content/settings/publicKeys.json"
-import { registerEvents } from "./betaFeatures"
+// import { registerEvents } from "./betaFeatures"
 
 let config = {
   backend: {
@@ -80,4 +80,9 @@ CMS.init({ config })
 
 registerPreviews()
 
-registerEvents()
+CMS.registerEventListener({
+  name: "preSave",
+  handler: data => {
+    return colorsEventPreSave(data)
+  },
+})

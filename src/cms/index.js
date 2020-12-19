@@ -5,6 +5,7 @@ import { repository } from "../../package.json"
 import cloudinary from "netlify-cms-media-library-cloudinary"
 import uploadcare from "netlify-cms-media-library-uploadcare"
 import publicKeys from "../../content/settings/publicKeys.json"
+import { colorsEventPreSave } from "./collections/settings/events/colors"
 // import { registerEvents } from "./betaFeatures"
 
 let config = {

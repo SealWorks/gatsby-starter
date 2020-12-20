@@ -6,14 +6,14 @@ const manifestCollectionFile: CmsCollectionFile = {
   name: "manifest",
   fields: [
     { label: "Name", name: "name", widget: "string" },
-    { label: "Short Name", name: "short_name", widget: "string" },
-    { label: "Start URL", name: "start_url", widget: "string" },
+    { label: "Short Name", name: "shortName", widget: "string" },
+    { label: "Start URL", name: "startUrl", widget: "string" },
     {
       label: "Background Color",
-      name: "background_color",
+      name: "bgColor",
       widget: "color",
     },
-    { label: "Theme Color", name: "theme_color", widget: "color" },
+    { label: "Theme Color", name: "themeColor", widget: "color" },
     {
       label: "Orientation",
       name: "orientation",

@@ -1,6 +1,6 @@
 import React, { useMemo } from "react"
 import { graphql } from "gatsby"
-import { Container, DefaultLayout, Link } from "../../components"
+import { Container, DefaultLayout, Link, SEO } from "../../components"
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react"
 
 interface CategoryObjProps {
@@ -62,6 +62,7 @@ const BlogIndex: React.FC<BlogQueryProps> = ({ data }) => {
 
   return (
     <DefaultLayout>
+      <SEO slug="/blog" pageMetadata={{ title: "Nosso Blog" }} />
       <Container>
         <Flex>
           {edges.map(
@@ -89,7 +90,6 @@ const BlogIndex: React.FC<BlogQueryProps> = ({ data }) => {
                   _hover={{
                     shadow: "2xl",
                     textDecoration: "none",
-                    transform: "translateY(-1px)",
                   }}
                 >
                   <Flex

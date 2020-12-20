@@ -1,6 +1,6 @@
 import React from "react"
 import PostTemplate from "./PostTemplate"
-import { Container, DefaultLayout, Link, SVGIcon } from "../../components"
+import { Container, DefaultLayout, Link, SEO, SVGIcon } from "../../components"
 import { graphql } from "gatsby"
 import {
   Box,
@@ -22,10 +22,21 @@ const MarketBox: React.FC = () => (
         proprietária do Brasil.
       </Heading>
       <Flex>
-        <Button as={Link} href="#" variant="outline" colorScheme="brand" mr={8}>
+        <Button
+          as={Link}
+          href="/faq"
+          variant="outline"
+          colorScheme="brand"
+          mr={8}
+        >
           Saiba mais
         </Button>
-        <Button as={Link} href="#" variant="solid" colorScheme="brand">
+        <Button
+          as={Link}
+          href="/entre-para-o-time"
+          variant="solid"
+          colorScheme="brand"
+        >
           Entre para o time
         </Button>
       </Flex>
@@ -69,8 +80,10 @@ const PagesLayout: React.FC<PageProps> = ({ data, pageContext }) => {
       category,
     },
   }
+  const { title, slug, metadata } = data.mdx.frontmatter
   return (
     <DefaultLayout>
+      <SEO slug={slug} pageMetadata={{ title }} metadata={metadata} />
       <Box
         bgColor="gray.200"
         bgImg={`url(${templateData.post.bgImage})`}

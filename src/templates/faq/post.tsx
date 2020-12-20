@@ -1,6 +1,6 @@
 import React from "react"
 import PostTemplate from "./PostTemplate"
-import { Container, DefaultLayout, FaqForm, Link } from "../../components"
+import { Container, DefaultLayout, FaqForm, Link, SEO } from "../../components"
 import { graphql, navigate } from "gatsby"
 import {
   Box,
@@ -52,8 +52,10 @@ const PagesLayout: React.FC<QueryDataToAny> = ({ data, pageContext }) => {
       category,
     },
   }
+  const { title, slug, metadata } = data.mdx.frontmatter
   return (
     <DefaultLayout>
+      <SEO slug={slug} pageMetadata={{ title }} metadata={metadata} />
       <Container>
         <Flex
           w={{ base: "100%", lg: "61.8%" }}

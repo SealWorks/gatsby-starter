@@ -1,6 +1,6 @@
 import React from "react"
 import Template from "./template"
-import { DefaultLayout } from "../../../components"
+import { DefaultLayout, SEO } from "../../../components"
 import { graphql } from "gatsby"
 
 interface QueryDataToAny {
@@ -9,8 +9,10 @@ interface QueryDataToAny {
 
 const PagesLayout: React.FC<QueryDataToAny> = ({ data }) => {
   const { body } = data.mdx
+  const { title, slug, metadata } = data.mdx.frontmatter
   return (
     <DefaultLayout>
+      <SEO slug={slug} pageMetadata={{ title }} metadata={metadata} />
       <Template
         data={{
           ...data.mdx.frontmatter,

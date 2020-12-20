@@ -1,10 +1,10 @@
 {
-  "icon": "/img/logo-verbasa.svg",
+  "icon": "/favicon.ico",
   "name": "Verbasa",
-  "short_name": "Verbasa",
-  "start_url": "/",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "shortname": "Verbasa",
+  "startUrl": "/",
+  "bgColor": "#ffffff",
+  "themeColor": "#ffffff",
   "orientation": "portrait",
   "display": "standalone"
 }

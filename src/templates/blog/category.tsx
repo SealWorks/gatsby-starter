@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Container, DefaultLayout, Link } from "../../components"
+import { Container, DefaultLayout, Link, SEO } from "../../components"
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react"
 
 interface BlogQueryProps {
@@ -36,6 +36,7 @@ const BlogIndex: React.FC<BlogQueryProps> = ({ data }) => {
   const { edges } = data.allMdx
   return (
     <DefaultLayout>
+      <SEO slug="/blog/category" pageMetadata={{ title: "Blog Category" }} />
       <Container>
         <Flex>
           {edges.map(
@@ -63,7 +64,6 @@ const BlogIndex: React.FC<BlogQueryProps> = ({ data }) => {
                   _hover={{
                     shadow: "2xl",
                     textDecoration: "none",
-                    transform: "translateY(-1px)",
                   }}
                 >
                   <Flex

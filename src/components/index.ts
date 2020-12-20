@@ -10,8 +10,10 @@ import MDXBodyRender from "./util/MDXBodyRender"
 import FaqForm from "./form/FaqForm"
 import MetaInput from "./form/MetaInput"
 import MetaTextarea from "./form/MetaTextarea"
+import SEO from "./util/SEO"
 
 export {
+  SEO,
   Card,
   Container,
   DefaultLayout,

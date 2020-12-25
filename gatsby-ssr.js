@@ -6,3 +6,5 @@ export const onRenderBody = ({ setPreBodyComponents }) => {
     <ColorModeScript initialColorMode="light" key="chakra-ui-no-flash" />,
   ])
 }
+
+// export { wrapRootElement } from "./src/gatsby/wrapRootElement"

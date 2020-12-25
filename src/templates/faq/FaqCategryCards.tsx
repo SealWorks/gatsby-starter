@@ -36,7 +36,7 @@ const FaqCategoryCards: React.FC = () => {
               {edges.map(edge => {
                 const card = edge.node.frontmatter
                 return (
-                  <Box key={edge.node.id} w="50%" p={4}>
+                  <Box key={edge.node.id} w={{ base: "100%", lg: "50%" }} p={4}>
                     <CategoryTemplate {...card} h="100%" />
                   </Box>
                 )

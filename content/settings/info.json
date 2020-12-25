@@ -1,22 +1,21 @@
 {
   "localID": {
-    "foundingDate": "2020-12-07T18:17:38.431Z",
-    "type": "CNPJ",
-    "legalName": "Verbasa Investimentos SA"
+    "foundingDate": "2020-12-24T20:13:38.152Z",
+    "type": "CNPJ"
   },
   "email": {
-    "address": "suporte@verbasa.com.br",
-    "subject": "[verbasa] website"
-  },
-  "address": {
-    "display": "Rua bernardino de campos 277, centro",
-    "locality": "Indaiatuba",
-    "region": "SP",
-    "country": "Brasil"
+    "address": "freedelivery@seal.works",
+    "subject": "contato"
   },
   "phone": {
-    "number": "",
-    "display": "",
-    "message": ""
+    "number": "+5527992246970",
+    "display": "27 99224.6970",
+    "message": "Free Delivery, olá sou "
+  },
+  "address": {
+    "display": "Online",
+    "locality": "Guarapari",
+    "region": "ES",
+    "country": "Brasil"
   }
 }

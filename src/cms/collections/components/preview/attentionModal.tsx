@@ -1,6 +1,6 @@
 import React, { ComponentType } from "react"
 import { PreviewTemplateComponentProps } from "netlify-cms-core"
-import { Template } from "../../../../templates/pages/plano-de-carreira"
+import { Template } from "../../../../components/ui/AttentionModal"
 
 const PreviewTemplate: ComponentType<PreviewTemplateComponentProps> = ({
   entry,
@@ -10,12 +10,12 @@ const PreviewTemplate: ComponentType<PreviewTemplateComponentProps> = ({
   const templateData = {
     ...cmsData,
     isPreview: true,
+    isOpen: true
   }
 
-  if (isLoadingAsset || !cmsData) {
+  if (isLoadingAsset || !templateData) {
     return <div>Loading ...</div>
   } else {
-    // return <div>{JSON.stringify(templateData)}</div>
     return <Template data={templateData} />
   }
 }

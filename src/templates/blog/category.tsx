@@ -1,11 +1,31 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { graphql } from "gatsby"
-import { Container, DefaultLayout, Link, SEO } from "../../components"
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react"
+import { Container, DefaultLayout, SEO } from "../../components"
+import { SimpleGrid } from "@chakra-ui/react"
+import BlogCard from "../../templates/blog/BlogCard"
+
+interface CategoryBySlugProps {
+  [key: string]: {
+    title: string
+    bgImage: string
+  }
+}
 
 interface BlogQueryProps {
   data: {
-    allMdx: {
+    categories: {
+      edges: Array<{
+        node: {
+          frontmatter: {
+            title: string
+            slug: string
+            bgImage: string
+          }
+        }
+      }>
+    }
+
+    posts: {
       edges: Array<{
         node: {
           body: string
@@ -33,12 +53,33 @@ interface BlogQueryProps {
 }
 
 const BlogIndex: React.FC<BlogQueryProps> = ({ data }) => {
-  const { edges } = data.allMdx
+  const categoryBySlug = useMemo<CategoryBySlugProps>(() => {
+    const initial = {}
+    return data.categories.edges.reduce((obj, item) => {
+      return {
+        ...obj,
+        [item.node.frontmatter.slug]: {
+          title: item.node.frontmatter.title,
+          bgImage: item.node.frontmatter.bgImage,
+        },
+      }
+    }, initial)
+  }, [data])
+
+  const { edges } = data.posts
+
   return (
     <DefaultLayout>
-      <SEO slug="/blog/category" pageMetadata={{ title: "Blog Category" }} />
+      <SEO slug="/blog" pageMetadata={{ title: "Nosso Blog" }} />
       <Container>
-        <Flex>
+        <SimpleGrid
+          columns={{
+            base: 1,
+            md: Math.min(2, edges.length),
+            lg: Math.min(3, edges.length),
+          }}
+          spacing={4}
+        >
           {edges.map(
             ({
               node: {
@@ -53,71 +94,19 @@ const BlogIndex: React.FC<BlogQueryProps> = ({ data }) => {
                 },
               },
             }) => (
-              <Box w="full" p={2} key={slug}>
-                <Box
-                  as={Link}
-                  href={`/blog${slug}`}
-                  w={{ base: "100%", md: "50%", lg: "33.3%" }}
-                  rounded="md"
-                  shadow="md"
-                  overflow="hidden"
-                  _hover={{
-                    shadow: "2xl",
-                    textDecoration: "none",
-                  }}
-                >
-                  <Flex
-                    bg={`url(${bgImage}) center center no-repeat`}
-                    bgSize="cover"
-                    h={60}
-                    justify="center"
-                    align="center"
-                    color="rgba(255,255,255,0.618)"
-                    position="relative"
-                    zIndex="-1"
-                  >
-                    <Heading>{caption}</Heading>
-                    <Flex
-                      position="absolute"
-                      top="0"
-                      zIndex="-1"
-                      px={10}
-                      justify="center"
-                      align="center"
-                      h="100%"
-                    >
-                      <Image src={image} rounded="md" />
-                    </Flex>
-                  </Flex>
-                  <Box>
-                    <Flex justify="space-between" p={4}>
-                      <Text
-                        as="span"
-                        color="brand.300"
-                        textTransform="uppercase"
-                        fontWeight="700"
-                      >
-                        {category}
-                      </Text>
-                      <Text as="span" fontSize="sm" color="aux.200">
-                        {lastUpdate}
-                      </Text>
-                    </Flex>
-                    <Heading
-                      as="h2"
-                      fontSize="2xl"
-                      p={4}
-                      pt={0}
-                      fontWeight="700"
-                    >
-                      {title}
-                    </Heading>
-                  </Box>
-                </Box>
-              </Box>
+              <BlogCard
+                key={slug}
+                slug={slug}
+                title={title}
+                image={image}
+                bgImage={bgImage ? bgImage : categoryBySlug[category].bgImage}
+                caption={!caption && !image ? title : caption}
+                category={categoryBySlug[category].title}
+                lastUpdate={lastUpdate}
+              />
             )
           )}
-        </Flex>
+        </SimpleGrid>
       </Container>
     </DefaultLayout>
   )
@@ -125,7 +114,20 @@ const BlogIndex: React.FC<BlogQueryProps> = ({ data }) => {
 
 export const pageQuery = graphql`
   query($category: String) {
-    allMdx(
+    categories: allMdx(
+      filter: { frontmatter: { templateKey: { glob: "blog/category" } } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            slug
+            bgImage
+          }
+        }
+      }
+    }
+    posts: allMdx(
       filter: {
         frontmatter: {
           templateKey: { glob: "blog/post" }

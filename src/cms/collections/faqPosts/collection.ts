@@ -30,8 +30,8 @@ const fields: CmsField[] = [
 ]
 
 const collection: CmsCollection = {
-  label: "Faq Post",
-  label_singular: "Faq Post",
+  label: "FAQ Post",
+  label_singular: "FAQ Post",
   name: "faqPost",
   folder: "content/faq/post",
   create: true,
@@ -40,7 +40,7 @@ const collection: CmsCollection = {
   format: "frontmatter",
   media_folder: "../../../static/img/faq",
   public_folder: "/img/faq",
-  summary: "{{title}} -> /faq{{fields.slug}}",
+  summary: "{{title}} {{fields.categories}}",
   sortable_fields: ["title", "metadata.dateModified"],
   fields,
 }

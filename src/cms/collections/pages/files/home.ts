@@ -1,9 +1,7 @@
 import { CmsCollectionFile } from "netlify-cms-core"
 import {
-  buttonFields,
   buttonsGroup,
   cardsGroup,
-  linkField,
   metadataObject,
   pageTitleField,
   slugField,
@@ -22,17 +20,17 @@ const homePageCollection: CmsCollectionFile = {
     },
     { ...slugField, pattern: ["/", "Home page must be '/' only"] },
     pageTitleField,
-    {
-      label: "Hero",
-      name: "hero",
-      widget: "object",
-      fields: [
-        { label: "Background Image", name: "bgImage", widget: "image" },
-        { label: "Title", name: "title", widget: "string" },
-        { label: "Headline", name: "headline", widget: "string" },
-        { ...buttonsGroup, fields: [...buttonFields, linkField] },
-      ],
-    },
+    // {
+    //   label: "Hero",
+    //   name: "hero",
+    //   widget: "object",
+    //   fields: [
+    //     { label: "Background Image", name: "bgImage", widget: "image" },
+    //     { label: "Title", name: "title", widget: "string" },
+    //     { label: "Headline", name: "headline", widget: "string" },
+    //     { ...buttonsGroup, fields: [...buttonFields, linkField] },
+    //   ],
+    // },
     {
       label: "Call to action",
       name: "callToAction",

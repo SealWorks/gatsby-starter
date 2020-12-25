@@ -11,8 +11,10 @@ import FaqForm from "./form/FaqForm"
 import MetaInput from "./form/MetaInput"
 import MetaTextarea from "./form/MetaTextarea"
 import SEO from "./util/SEO"
+import AttentionModal from "./ui/AttentionModal"
 
 export {
+  AttentionModal,
   SEO,
   Card,
   Container,

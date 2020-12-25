@@ -67,7 +67,7 @@ if (!!manifest) {
     options: {
       ...manifest,
       display: "standalone",
-      icon: path.join(__dirname, `static`, manifest.icon),
+      icon: path.join(__dirname, `static`, manifest.icon || "__dummy.svg"),
     },
   })
 }

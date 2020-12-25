@@ -1,11 +1,11 @@
 {
-  "siteUrl": "https://verbasa.com.br",
-  "author": "@verbasa1",
-  "logo": "/img/logo-verbasa.svg",
-  "thumbnail": "https://res.cloudinary.com/nennogabriel/image/upload/v1607367321/Verbasa/ogimage_a3knjq.jpg",
+  "siteUrl": "https://freedelivery.seal.works",
+  "author": "fikdikcombr",
+  "logo": "/img/delivery.svg",
+  "thumbnail": "/img/delivery.svg",
   "lang": "pt-BR",
-  "title": "Verbasa ",
-  "publisher": "@verbasa1",
-  "description": "De profissionais para profissionais! A melhor e mais desejada mesa proprietária do Brasil. Seja um de nossos traders.",
-  "logoAlt": "/img/logo-verbasa-alt.svg"
+  "title": "Free Delivery",
+  "publisher": "fikdikcombr",
+  "description": "Um delivery livre para o comerciante e mais barato para o cliente..",
+  "logoAlt": "/img/delivery.svg"
 }

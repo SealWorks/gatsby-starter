@@ -1,6 +1,10 @@
 import React from "react"
 import Template from "./template"
-import { DefaultLayout, NewsletterForm, SEO } from "../../../components"
+import {
+  DefaultLayout,
+  NewsletterForm,
+  SEO,
+} from "../../../components"
 import { graphql } from "gatsby"
 
 interface QueryDataToAny {

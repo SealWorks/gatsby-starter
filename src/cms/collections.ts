@@ -38,17 +38,8 @@ export const collections = [
 ]
 
 export function registerPreviews() {
-  // CMS.registerPreviewTemplate(pagesCollection.name, withChakra(pagesTemplate))
   CMS.registerPreviewTemplate("home", withChakra(pagesPreview.home))
   CMS.registerPreviewTemplate("about", withChakra(pagesPreview.about))
-  CMS.registerPreviewTemplate(
-    "entre-para-o-time",
-    withChakra(pagesPreview.entreParaOTime)
-  )
-  CMS.registerPreviewTemplate(
-    "plano-de-carreira",
-    withChakra(pagesPreview.planoDeCarreira)
-  )
   CMS.registerPreviewTemplate("header", withChakra(componentsPreview.header))
   CMS.registerPreviewTemplate(
     "newsletter",

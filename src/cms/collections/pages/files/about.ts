@@ -21,31 +21,6 @@ const aboutPageCollection: CmsCollectionFile = {
     slugField,
     pageTitleField,
     bodyField,
-    cardsGroup,
-    {
-      label: "Missão",
-      name: "mission",
-      widget: "object",
-      fields: [
-        { label: "Background Image", name: "bgImage", widget: "image" },
-        { label: "Text", name: "text", widget: "string" },
-      ],
-    },
-    {
-      label: "Visão",
-      name: "vision",
-      widget: "object",
-      fields: [
-        { label: "Background Image", name: "bgImage", widget: "image" },
-        { label: "Text", name: "text", widget: "string" },
-      ],
-    },
-    {
-      label: "Valores",
-      name: "values",
-      widget: "object",
-      field: cardsGroup,
-    },
     metadataObject,
   ],
 }

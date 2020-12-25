@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import PostTemplate from "./PostTemplate"
 import { Container, DefaultLayout, Link, SEO, SVGIcon } from "../../components"
 import { graphql } from "gatsby"
@@ -63,30 +63,60 @@ interface pageContextProps {
 }
 
 interface PageProps {
-  data: any
+  data: {
+    categories: {
+      edges: Array<{
+        node: {
+          frontmatter: {
+            title: string
+            slug: string
+            bgImage: string
+          }
+        }
+      }>
+    }
+    post: any
+  }
   pageContext: pageContextProps
 }
 
-const PagesLayout: React.FC<PageProps> = ({ data, pageContext }) => {
-  const categoryFound = pageContext.categories.data.allMdx.edges.find(
-    item => item.node.frontmatter.slug === data.mdx.frontmatter.category
-  )
-  const category = { ...categoryFound?.node.frontmatter }
+interface CategoryBySlugProps {
+  [key: string]: {
+    slug: string
+    title: string
+    bgImage: string
+  }
+}
 
+const PagesLayout: React.FC<PageProps> = ({ data, pageContext }) => {
+  const categoryBySlug = useMemo<CategoryBySlugProps>(() => {
+    const initial = {}
+    return data.categories.edges.reduce((obj, item) => {
+      return {
+        ...obj,
+        [item.node.frontmatter.slug]: { ...item.node.frontmatter },
+      }
+    }, initial)
+  }, [data])
+
+  const category = categoryBySlug[data.post.frontmatter.category]
+
+  const bgImage = data.post.frontmatter.bgImage || category.bgImage
   const templateData = {
     post: {
-      ...data.mdx.frontmatter,
-      body: data.mdx.body,
+      ...data.post.frontmatter,
+      body: data.post.body,
+      bgImage,
       category,
     },
   }
-  const { title, slug, metadata } = data.mdx.frontmatter
+  const { title, slug, metadata } = data.post.frontmatter
   return (
     <DefaultLayout>
       <SEO slug={slug} pageMetadata={{ title }} metadata={metadata} />
       <Box
         bgColor="gray.200"
-        bgImg={`url(${templateData.post.bgImage})`}
+        bgImg={`url(${bgImage})`}
         bgSize="100% 500px"
         bgPos="center top"
         bgRepeat="no-repeat"
@@ -122,7 +152,20 @@ const PagesLayout: React.FC<PageProps> = ({ data, pageContext }) => {
 
 const pageQuery = graphql`
   query($id: String) {
-    mdx(id: { eq: $id }) {
+    categories: allMdx(
+      filter: { frontmatter: { templateKey: { glob: "blog/category" } } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            slug
+            bgImage
+          }
+        }
+      }
+    }
+    post: mdx(id: { eq: $id }) {
       body
       frontmatter {
         title

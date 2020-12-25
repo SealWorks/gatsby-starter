@@ -19,12 +19,16 @@ export const Template: React.FC<TemplateProps> = ({
     <Box bg="brand.500" color="white" py={10}>
       <Container>
         <Flex w="100%" wrap="wrap">
-          <Box w={{ base: "100%", md: "50%" }}>
+          <Flex
+            w={{ base: "100%", md: "50%" }}
+            direction="column"
+            justify="center"
+          >
             <Heading fontSize="2xl">{title}</Heading>
             <Divider borderBottom="2px solid white" w={20} my={4} />
             <MDXBodyRender body={body} isPreview={isPreview} />
-          </Box>
-          <Box w="50%" display={{ base: "none", md: "block" }}>
+          </Flex>
+          <Box w={{ base: "100%", md: "50%" }} mt={{ base: 8, md: 0 }}>
             <FormComponent />
           </Box>
         </Flex>

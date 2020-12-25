@@ -2,25 +2,8 @@ import React from "react"
 import { MDXProvider } from "@mdx-js/react"
 import components from "../../../components/mdx"
 
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Center,
-  Divider,
-  Flex,
-  Heading,
-  HStack,
-  Text,
-  VStack,
-} from "@chakra-ui/react"
-import {
-  Link,
-  SVGIcon,
-  Container,
-  Card,
-  MDXBodyRender,
-} from "../../../components/"
+import { Box, Divider, Flex, Heading, Text } from "@chakra-ui/react"
+import { Container, Card, MDXBodyRender } from "../../../components/"
 
 interface BlockDescriptionProps {
   title: string
@@ -173,6 +156,7 @@ const BlockValues: React.FC<BlockValuesProps> = ({ cards }) => {
             p={2}
             w={{ base: "50%", md: "30%" }}
             flex="0 0 auto"
+            h="auto"
           />
         ))}
       </Flex>

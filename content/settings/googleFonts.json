@@ -1,11 +1,10 @@
 {
   "fonts": [
     {
-      "family": "Nunito Sans",
+      "family": "Roboto",
       "variants": [
         "400",
-        "700",
-        "900"
+        "700"
       ]
     }
   ]

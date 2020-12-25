@@ -1,8 +1,8 @@
 {
-  "icon": "/favicon.ico",
-  "name": "Verbasa",
-  "shortname": "Verbasa",
-  "startUrl": "/",
+  "icon": "/img/delivery.svg",
+  "name": "Delivery",
+  "shortName": "Delivery",
+  "startUrl": "https://delivery.fikdik.com.br",
   "bgColor": "#ffffff",
   "themeColor": "#ffffff",
   "orientation": "portrait",

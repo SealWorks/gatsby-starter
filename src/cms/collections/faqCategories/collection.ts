@@ -21,8 +21,8 @@ const fields: CmsField[] = [
 ]
 
 const collection: CmsCollection = {
-  label: "Faq Categories",
-  label_singular: "Faq Category",
+  label: "FAQ Categories",
+  label_singular: "FAQ Category",
   name: "faqCategory",
   folder: "content/faq/category",
   create: true,

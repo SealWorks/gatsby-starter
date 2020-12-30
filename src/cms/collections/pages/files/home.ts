@@ -42,13 +42,7 @@ const homePageCollection: CmsCollectionFile = {
       ],
     },
     {
-      label: "Description",
-      name: "description",
-      widget: "object",
-      fields: [{ label: "Title", name: "title", widget: "string" }, cardsGroup],
-    },
-    {
-      label: "Body (of Description)",
+      label: "Body",
       name: "body",
       widget: "markdown",
     },

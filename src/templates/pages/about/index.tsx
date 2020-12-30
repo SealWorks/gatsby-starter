@@ -101,26 +101,6 @@ const pageQuery = graphql`
       frontmatter {
         title
         slug
-        cards {
-          title
-          text
-          link
-          icon
-        }
-        mission {
-          bgImage
-          text
-        }
-        vision {
-          bgImage
-          text
-        }
-        values {
-          cards {
-            title
-            icon
-          }
-        }
         metadata {
           title
           description

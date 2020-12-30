@@ -9,11 +9,7 @@ const PreviewTemplate: ComponentType<PreviewTemplateComponentProps> = ({
   const cmsData = entry.getIn(["data"]).toJS()
   const templateData = {
     ...cmsData,
-    description: {
-      ...cmsData.description,
-      body: cmsData.body,
-      isPreview: true,
-    },
+    isPreview: true,
   }
 
   if (isLoadingAsset || !templateData) {

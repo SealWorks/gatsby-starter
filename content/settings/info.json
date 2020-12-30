@@ -1,16 +1,17 @@
 {
   "localID": {
     "foundingDate": "2020-12-24T20:13:38.152Z",
-    "type": "CNPJ"
+    "type": "CNPJ",
+    "legalName": ""
   },
   "email": {
-    "address": "freedelivery@seal.works",
+    "address": "bestdelivery@seal.works",
     "subject": "contato"
   },
   "phone": {
     "number": "+5527992246970",
     "display": "27 99224.6970",
-    "message": "Free Delivery, olá sou "
+    "message": "Best Delivery, olá sou "
   },
   "address": {
     "display": "Online",

@@ -1,10 +1,6 @@
 import React from "react"
 import Template from "./template"
-import {
-  DefaultLayout,
-  NewsletterForm,
-  SEO,
-} from "../../../components"
+import { DefaultLayout, SEO } from "../../../components"
 import { graphql } from "gatsby"
 
 interface QueryDataToAny {
@@ -13,14 +9,7 @@ interface QueryDataToAny {
 
 const PagesLayout: React.FC<QueryDataToAny> = ({ data }) => {
   const { body } = data.mdx
-  const {
-    hero,
-    callToAction,
-    description,
-    slug,
-    title,
-    metadata,
-  } = data.mdx.frontmatter
+  const { callToAction, slug, title, metadata } = data.mdx.frontmatter
   const { siteMetadata } = data.site
   const { info, social } = siteMetadata
   const structuredDataOrganization = JSON.stringify({
@@ -64,15 +53,10 @@ const PagesLayout: React.FC<QueryDataToAny> = ({ data }) => {
       />
       <Template
         data={{
-          hero,
           callToAction,
-          description: {
-            body,
-            ...description,
-          },
+          body,
         }}
       />
-      <NewsletterForm />
     </DefaultLayout>
   )
 }
@@ -116,35 +100,10 @@ const pageQuery = graphql`
       frontmatter {
         slug
         title
-        hero {
-          title
-          headline
-          buttons {
-            colorScheme
-            variant
-            label
-            link
-          }
-          bgImage
-        }
         callToAction {
           title
           cards {
             title
-            icon
-          }
-          buttons {
-            colorScheme
-            variant
-            label
-          }
-        }
-        description {
-          title
-          cards {
-            title
-            text
-            link
             icon
           }
         }
